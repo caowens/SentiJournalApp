@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   MobileNav,
@@ -36,29 +37,29 @@ export function StickyNavbar() {
         className="p-1 font-normal"
       >
         <a href="#" className="flex items-center">
+          Analysis
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+      >
+        <a href="#" className="flex items-center">
           Account
         </a>
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
+      <Button
+        variant="gradient"
+        size="sm"
+        className="flex items-center gap-3"
+        color="purple"
       >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Docs
-        </a>
-      </Typography>
+        <span class="material-symbols-outlined">
+          <Link to="new">add</Link>
+        </span>
+      </Button>
     </ul>
   );
 
@@ -69,8 +70,9 @@ export function StickyNavbar() {
           as="a"
           href="#"
           className="mr-4 cursor-pointer py-1.5 font-medium"
+          color="purple"
         >
-          Material Tailwind
+          <Link to="/">SentiJournal</Link>
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
@@ -79,11 +81,13 @@ export function StickyNavbar() {
               <span>Log In</span>
             </Button>
             <Button
-              variant="gradient"
+              variant="outlined"
               size="sm"
               className="hidden lg:inline-block"
             >
-              <span>Sign in</span>
+              <span>
+                <Link to="signup">Sign in</Link>
+              </span>
             </Button>
           </div>
           <IconButton
@@ -132,7 +136,9 @@ export function StickyNavbar() {
             <span>Log In</span>
           </Button>
           <Button fullWidth variant="gradient" size="sm" className="">
-            <span>Sign in</span>
+            <span>
+              <Link to="signup">Sign in</Link>
+            </span>
           </Button>
         </div>
       </MobileNav>

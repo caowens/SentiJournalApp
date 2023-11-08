@@ -1,3 +1,30 @@
 /* .App {
   background-color: #7e3af2; /* To be used when you have a transparent table
 } */
+
+.forms {
+  display:flex;
+  justify-content: center;
+}
+.forms div {
+  /* border: 1px #ccc solid; */
+  padding:10px;
+}
+
+.home-stack {
+  display: flex;
+  justify-content: center;
+}
+
+.home-stack-alignment {
+  display: flex;
+  flex-direction: column;
+}
+.entries {
+  padding: 10px;
+  align-self: center;
+}
+
+.entries-title {
+  margin-bottom: 10px;
+}
