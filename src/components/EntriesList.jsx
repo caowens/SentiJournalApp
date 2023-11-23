@@ -5,6 +5,7 @@ import {
   ListItemSuffix,
   Card,
   IconButton,
+  Chip,
 } from "@material-tailwind/react";
 
 function TrashIcon() {
@@ -31,6 +32,17 @@ export function EntriesList() {
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry One
           <ListItemSuffix>
+            <div className="square"></div>
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <Chip
+              value="11/22/2023"
+              variant="ghost"
+              size="sm"
+              className="rounded-full"
+            />
+          </ListItemSuffix>
+          <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">
               <TrashIcon />
             </IconButton>
@@ -39,6 +51,17 @@ export function EntriesList() {
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry Two
           <ListItemSuffix>
+            <div className="square"></div>
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <Chip
+              value="11/22/2023"
+              variant="ghost"
+              size="sm"
+              className="rounded-full"
+            />
+          </ListItemSuffix>
+          <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">
               <TrashIcon />
             </IconButton>
@@ -46,6 +69,17 @@ export function EntriesList() {
         </ListItem>
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry Three
+          <ListItemSuffix>
+            <div className="square"></div>
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <Chip
+              value="11/22/2023"
+              variant="ghost"
+              size="sm"
+              className="rounded-full"
+            />
+          </ListItemSuffix>
           <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">
               <TrashIcon />

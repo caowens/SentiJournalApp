@@ -28,3 +28,10 @@
 .entries-title {
   margin-bottom: 10px;
 }
+
+.square {
+  height: 15px;
+  width: 15px;
+  background-color: #555;
+  border-radius: 2px;
+}
