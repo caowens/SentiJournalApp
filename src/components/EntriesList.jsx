@@ -27,13 +27,10 @@ function TrashIcon() {
 
 export function EntriesList() {
   return (
-    <Card className="w-96">
+    <Card className="w-full">
       <List>
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry One
-          <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
           <ListItemSuffix>
             <Chip
               value="11/22/2023"
@@ -41,6 +38,9 @@ export function EntriesList() {
               size="sm"
               className="rounded-full"
             />
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <div className="square"></div>
           </ListItemSuffix>
           <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">
@@ -51,15 +51,15 @@ export function EntriesList() {
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry Two
           <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
-          <ListItemSuffix>
             <Chip
               value="11/22/2023"
               variant="ghost"
               size="sm"
               className="rounded-full"
             />
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <div className="square"></div>
           </ListItemSuffix>
           <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">
@@ -70,15 +70,15 @@ export function EntriesList() {
         <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry Three
           <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
-          <ListItemSuffix>
             <Chip
               value="11/22/2023"
               variant="ghost"
               size="sm"
               className="rounded-full"
             />
+          </ListItemSuffix>
+          <ListItemSuffix>
+            <div className="square"></div>
           </ListItemSuffix>
           <ListItemSuffix>
             <IconButton variant="text" color="blue-gray">

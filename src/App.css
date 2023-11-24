@@ -12,10 +12,11 @@
   justify-content: center;
 }
 
-.home-stack-alignment {
+/* .home-stack-alignment {
   display: flex;
   flex-direction: column;
-}
+} */
+
 .entries {
   padding: 10px;
   align-self: center;
