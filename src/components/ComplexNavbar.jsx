@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   MobileNav,
@@ -247,7 +248,9 @@ export function ComplexNavbar() {
           href="#"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
-          Material Tailwind
+          <Link to="/">
+            SentiJournal
+          </Link>
         </Typography>
         <div className="hidden lg:block">
           <NavList />
@@ -263,7 +266,7 @@ export function ComplexNavbar() {
         </IconButton>
  
         <Button size="sm" variant="text">
-          <span>Log In</span>
+          <span><Link to="signup">Log In</Link></span>
         </Button>
         <ProfileMenu />
       </div>

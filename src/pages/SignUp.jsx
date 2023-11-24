@@ -10,7 +10,7 @@ import {
 export function SimpleRegistrationForm(props) {
   return (
     <div className={props}>
-      <div className="form-box">
+      <div className="form-box signup-box">
         <Card color="transparent" shadow={false}>
           <Typography variant="h4" color="blue-gray">
             Sign Up
