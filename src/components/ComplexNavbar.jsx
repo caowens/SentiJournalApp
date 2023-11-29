@@ -201,7 +201,7 @@ const navListItems = [
   {
     label: "Analysis",
     icon: ChartBarIcon,
-    route: "/"
+    route: "/analysis"
   },
   {
     label: "New",

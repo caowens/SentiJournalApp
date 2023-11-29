@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 import Root from './routes/Root';
 import { NewEntry } from './pages/NewEntry';
 import { Home } from './pages/Home';
+import Analysis from './pages/Analysis';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path:"/analysis",
+        element: <Analysis />,
       },
     ],
 
