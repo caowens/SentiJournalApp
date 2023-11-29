@@ -43,3 +43,14 @@
   background-color: whitesmoke;
   border-radius: 6px;
 }
+
+.forms-new-entry {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.new-entry-box {
+  width: 100%;
+}
