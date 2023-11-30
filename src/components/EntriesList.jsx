@@ -7,7 +7,14 @@ import {
   IconButton,
   Chip,
 } from "@material-tailwind/react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { auth, db } from "../firebase.js";
 
 function TrashIcon() {
@@ -64,7 +71,14 @@ function create_UUID() {
   return uuid;
 }
 
-const JournalEntry = ({ title, timestamp }) => {
+const JournalEntry = ({ title, timestamp, id, setJournalEntries }) => {
+  const handleDelete = async () => {
+    await deleteDoc(doc(db, "journals", id));
+
+    // Refetch journal entries and update state
+    const newJournalEntries = await fetchJournalEntries();
+    setJournalEntries(newJournalEntries);
+  };
   return (
     <ListItem ripple={false} className="py-1 pr-1 pl-4">
       {title}
@@ -80,7 +94,7 @@ const JournalEntry = ({ title, timestamp }) => {
         <div className="square"></div>
       </ListItemSuffix>
       <ListItemSuffix>
-        <IconButton variant="text" color="blue-gray">
+        <IconButton onClick={handleDelete} variant="text" color="blue-gray">
           <TrashIcon />
         </IconButton>
       </ListItemSuffix>
@@ -89,24 +103,6 @@ const JournalEntry = ({ title, timestamp }) => {
 };
 
 export function EntriesList() {
-  // const [entryQuery, setEntryQuery] = useState();
-  // const journalEntries = [];
-
-  // const handleSubmit = async () => {
-
-  //   const currentUser = auth.currentUser;
-  //   const newJournalID = create_UUID();
-  //   const q = query(collection(db, "journals"), where("userId", "==", currentUser.uid));
-  //   const querySnapshot = await getDocs(q);
-  //   querySnapshot.forEach((doc) => {
-  //     // doc.data() is never undefined for query doc snapshots
-  //     // setEntryQuery(doc.data());
-  //     coll.push(entryQuery);
-  //     console.log(doc.id, " => ", doc.data());
-  //   });
-  // };
-  // handleSubmit();
-  // console.log(coll)
   const [journalEntries, setJournalEntries] = useState([]);
   useEffect(() => {
     const fetchEntries = async () => {
@@ -120,65 +116,14 @@ export function EntriesList() {
     <Card className="w-full">
       <List>
         {journalEntries.map((entry) => (
-          <JournalEntry key={entry.id} title={entry.title} timestamp={entry.timestamp} />
+          <JournalEntry
+            key={entry.id}
+            title={entry.title}
+            timestamp={entry.timestamp}
+            id={entry.id}
+            setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
+          />
         ))}
-        {/* <ListItem ripple={false} className="py-1 pr-1 pl-4">
-          Entry One
-          <ListItemSuffix>
-            <Chip
-              value="11/22/2023"
-              variant="ghost"
-              size="sm"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <IconButton variant="text" color="blue-gray">
-              <TrashIcon />
-            </IconButton>
-          </ListItemSuffix>
-        </ListItem>
-        <ListItem ripple={false} className="py-1 pr-1 pl-4">
-          Entry Two
-          <ListItemSuffix>
-            <Chip
-              value="11/22/2023"
-              variant="ghost"
-              size="sm"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <IconButton variant="text" color="blue-gray">
-              <TrashIcon />
-            </IconButton>
-          </ListItemSuffix>
-        </ListItem>
-        <ListItem ripple={false} className="py-1 pr-1 pl-4">
-          Entry Three
-          <ListItemSuffix>
-            <Chip
-              value="11/22/2023"
-              variant="ghost"
-              size="sm"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <div className="square"></div>
-          </ListItemSuffix>
-          <ListItemSuffix>
-            <IconButton variant="text" color="blue-gray">
-              <TrashIcon />
-            </IconButton>
-          </ListItemSuffix>
-        </ListItem> */}
       </List>
     </Card>
   );
