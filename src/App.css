@@ -3,7 +3,6 @@
   justify-content: center;
 }
 .forms div {
-  /* border: 1px #ccc solid; */
   padding:10px;
 }
 
@@ -12,20 +11,13 @@
   justify-content: center;
 }
 
-/* .home-stack-alignment {
-  display: flex;
-  flex-direction: column;
-} */
-
 .entries {
   padding: 10px;
   align-self: center;
 }
 
 .entries-title {
-  /* margin-bottom: 10px; */
   color: white;
-  /* align-self: center; */
 }
 
 .square {

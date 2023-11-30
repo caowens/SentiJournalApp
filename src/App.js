@@ -1,7 +1,4 @@
 import './App.css';
-import Example from './components/Example';
-import { StickyNavbar } from './components/Navbar';
-import { BoilerHome } from './pages/BoilerHome';
 import { SignUp } from './pages/SignUp';
 import {
   createBrowserRouter,
