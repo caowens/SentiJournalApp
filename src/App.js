@@ -13,6 +13,7 @@ import { NewEntry } from './pages/NewEntry';
 import { Home } from './pages/Home';
 import Analysis from './pages/Analysis';
 import { Login } from './pages/Login';
+import { Profile } from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:"/signedin/analysis",
         element: <Analysis />,
+      },
+      {
+        path:"/signedin/profile",
+        element: <Profile />,
       },
     ],
 
