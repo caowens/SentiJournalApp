@@ -13,14 +13,14 @@ type: "line",
 height: 240,
 series: [
     {
-    name: "Sales",
+    name: "Sentiment",
     data: [-1, 0, 1, 1, -1, 0, -1, 1, 0],
     },
 ],
 options: {
     chart: {
     toolbar: {
-        show: false,
+        show: true,
     },
     },
     title: {
