@@ -201,12 +201,12 @@ const navListItems = [
   {
     label: "Analysis",
     icon: ChartBarIcon,
-    route: "/analysis"
+    route: "/signedin/analysis"
   },
   {
     label: "New",
     icon: PlusCircleIcon,
-    route: "/new"
+    route: "/signedin/new"
   },
 ];
  
@@ -223,10 +223,12 @@ function NavList() {
           color="gray"
           className="font-medium text-blue-gray-500"
         >
+          <Link to={route}>
           <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-            <span className="text-gray-900"><Link to={route}> {label}</Link></span>
+              {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+              <span className="text-gray-900"> {label}</span>
           </MenuItem>
+          </Link>
         </Typography>
       ))}
     </ul>
@@ -253,7 +255,7 @@ export function ComplexNavbar() {
           href="#"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
-          <Link to="/">
+          <Link to="/signedin">
             SentiJournal
           </Link>
         </Typography>
@@ -270,9 +272,11 @@ export function ComplexNavbar() {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
  
-        <Button size="sm" variant="text">
-          <span><Link to="/login">Log In</Link></span>
-        </Button>
+        <Link to="/">
+          <Button size="sm" variant="text">
+            <span>Log In</span>
+          </Button>
+        </Link>
         <ProfileMenu />
       </div>
       <MobileNav open={isNavOpen} className="overflow-scroll">

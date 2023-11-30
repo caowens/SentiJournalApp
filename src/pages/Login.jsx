@@ -45,9 +45,11 @@ export function SimpleRegistrationForm(props) {
                 }}
               />
             </div>
-            <Button className="mt-6" fullWidth>
-              log in
-            </Button>
+            <Link to="/signedin">
+                <Button className="mt-6" fullWidth>
+                    log in
+                </Button>
+            </Link>
             <Typography color="gray" className="mt-4 text-center font-normal">
               Need to create an account?{" "}
               <a href="#" className="font-medium text-gray-900">

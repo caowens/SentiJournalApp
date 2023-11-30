@@ -17,28 +17,30 @@ import { Login } from './pages/Login';
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/signedin",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/signedin",
         element: <Home />,
       },
       {
-        path: "/new",
+        path: "/signedin/new",
         element: <NewEntry />,
       },
       {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path:"/analysis",
+        path:"/signedin/analysis",
         element: <Analysis />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
 
