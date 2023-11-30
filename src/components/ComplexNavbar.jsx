@@ -150,7 +150,7 @@ const navListItems = [
   {
     label: "Account",
     icon: UserCircleIcon,
-    route: "/signup"
+    route: "/signedin/profile"
   },
   {
     label: "Analysis",
