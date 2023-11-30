@@ -271,7 +271,7 @@ export function ComplexNavbar() {
         </IconButton>
  
         <Button size="sm" variant="text">
-          <span><Link to="signup">Log In</Link></span>
+          <span><Link to="/login">Log In</Link></span>
         </Button>
         <ProfileMenu />
       </div>

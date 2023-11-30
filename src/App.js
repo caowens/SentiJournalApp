@@ -12,6 +12,7 @@ import Root from './routes/Root';
 import { NewEntry } from './pages/NewEntry';
 import { Home } from './pages/Home';
 import Analysis from './pages/Analysis';
+import { Login } from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:"/analysis",
         element: <Analysis />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
 
