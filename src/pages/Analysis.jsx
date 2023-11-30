@@ -99,32 +99,34 @@ options: {
 
 export default function Analysis() {
     return (
-        <Card>
-        <CardHeader
-            floated={false}
-            shadow={false}
-            color="transparent"
-            className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
-        >
-            <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
-            <ChartBarIcon className="h-6 w-6" />
-            </div>
-            <div>
-            <Typography variant="h6" color="blue-gray">
-                Sentiment Analysis Line Chart
-            </Typography>
-            <Typography
-                variant="small"
-                color="gray"
-                className="max-w-sm font-normal"
+        <div className="chart-spacing">
+            <Card>
+            <CardHeader
+                floated={false}
+                shadow={false}
+                color="transparent"
+                className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
             >
-                A visualization of the sentiments of your entries. 1 means positive. 0 means neutral. -1 means negative.
-            </Typography>
-            </div>
-        </CardHeader>
-        <CardBody className="px-2 pb-0">
-            <Chart {...chartConfig} />
-        </CardBody>
-        </Card>
+                <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
+                <ChartBarIcon className="h-6 w-6" />
+                </div>
+                <div>
+                <Typography variant="h6" color="blue-gray">
+                    Sentiment Analysis Line Chart
+                </Typography>
+                <Typography
+                    variant="small"
+                    color="gray"
+                    className="max-w-sm font-normal"
+                >
+                    A visualization of the sentiments of your entries. 1 means positive. 0 means neutral. -1 means negative.
+                </Typography>
+                </div>
+            </CardHeader>
+            <CardBody className="px-2 pb-0">
+                <Chart {...chartConfig} />
+            </CardBody>
+            </Card>
+        </div>
     );
 }

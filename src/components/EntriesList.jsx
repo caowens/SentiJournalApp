@@ -1,4 +1,4 @@
-import react from "react";
+import { react, useState, useEffect } from "react";
 import {
   List,
   ListItem,
@@ -7,6 +7,8 @@ import {
   IconButton,
   Chip,
 } from "@material-tailwind/react";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase.js";
 
 function TrashIcon() {
   return (
@@ -25,11 +27,102 @@ function TrashIcon() {
   );
 }
 
+const fetchJournalEntries = async () => {
+  const currentUser = auth.currentUser;
+  const q = query(
+    collection(db, "journals"),
+    where("userId", "==", currentUser.uid)
+  );
+  const querySnapshot = await getDocs(q);
+
+  const journalEntries = [];
+  querySnapshot.forEach((doc) => {
+    const data = {
+      id: doc.id,
+      title: doc.data().title,
+      content: doc.data().content,
+      timestamp: doc.data().timestamp,
+      creationDate: doc.data().creationDate,
+      editedDate: doc.data().editedDate,
+    };
+    journalEntries.push(data);
+  });
+
+  return journalEntries;
+};
+
+function create_UUID() {
+  var dt = new Date().getTime();
+  var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+    /[xy]/g,
+    function (c) {
+      var r = (dt + Math.random() * 16) % 16 | 0;
+      dt = Math.floor(dt / 16);
+      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+    }
+  );
+  return uuid;
+}
+
+const JournalEntry = ({ title, timestamp }) => {
+  return (
+    <ListItem ripple={false} className="py-1 pr-1 pl-4">
+      {title}
+      <ListItemSuffix>
+        <Chip
+          value={timestamp}
+          variant="ghost"
+          size="sm"
+          className="rounded-full"
+        />
+      </ListItemSuffix>
+      <ListItemSuffix>
+        <div className="square"></div>
+      </ListItemSuffix>
+      <ListItemSuffix>
+        <IconButton variant="text" color="blue-gray">
+          <TrashIcon />
+        </IconButton>
+      </ListItemSuffix>
+    </ListItem>
+  );
+};
+
 export function EntriesList() {
+  // const [entryQuery, setEntryQuery] = useState();
+  // const journalEntries = [];
+
+  // const handleSubmit = async () => {
+
+  //   const currentUser = auth.currentUser;
+  //   const newJournalID = create_UUID();
+  //   const q = query(collection(db, "journals"), where("userId", "==", currentUser.uid));
+  //   const querySnapshot = await getDocs(q);
+  //   querySnapshot.forEach((doc) => {
+  //     // doc.data() is never undefined for query doc snapshots
+  //     // setEntryQuery(doc.data());
+  //     coll.push(entryQuery);
+  //     console.log(doc.id, " => ", doc.data());
+  //   });
+  // };
+  // handleSubmit();
+  // console.log(coll)
+  const [journalEntries, setJournalEntries] = useState([]);
+  useEffect(() => {
+    const fetchEntries = async () => {
+      const entries = await fetchJournalEntries();
+      setJournalEntries(entries);
+    };
+    fetchEntries();
+  }, []);
+
   return (
     <Card className="w-full">
       <List>
-        <ListItem ripple={false} className="py-1 pr-1 pl-4">
+        {journalEntries.map((entry) => (
+          <JournalEntry key={entry.id} title={entry.title} timestamp={entry.timestamp} />
+        ))}
+        {/* <ListItem ripple={false} className="py-1 pr-1 pl-4">
           Entry One
           <ListItemSuffix>
             <Chip
@@ -85,7 +178,7 @@ export function EntriesList() {
               <TrashIcon />
             </IconButton>
           </ListItemSuffix>
-        </ListItem>
+        </ListItem> */}
       </List>
     </Card>
   );
