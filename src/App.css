@@ -1,6 +1,7 @@
 .forms {
   display:flex;
   justify-content: center;
+  margin-top: 6%;
 }
 .forms div {
   padding:10px;
@@ -54,3 +55,7 @@
 .complex-navbar {
   background-color: white;
 }
+
+/* .form-box {
+  margin-top: 50%;
+} */
