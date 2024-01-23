@@ -56,6 +56,11 @@
   background-color: white;
 }
 
-/* .form-box {
-  margin-top: 50%;
-} */
+.edit-entry-title:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.journal-entry-in-list:hover {
+  cursor: default;
+}
