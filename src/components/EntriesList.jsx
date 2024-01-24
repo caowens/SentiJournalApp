@@ -121,7 +121,7 @@ const JournalEntry = ({
   };
   const getColor = () => {
     if (sentiment === 1) {
-      return "blue";
+      return "green";
     } else if (sentiment === -1) {
       return "red";
     } else {

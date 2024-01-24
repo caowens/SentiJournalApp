@@ -119,7 +119,7 @@ export function EditEntry(props) {
                       />
                     </div>
                     <Button className="mt-6" type="submit" fullWidth>
-                      Save
+                      Update
                     </Button>
                   </form>
                 </Card>
