@@ -72,6 +72,7 @@ const fetchJournalEntries = async () => {
       editedDate: doc.data().editedDate,
       userID: doc.data().userID,
       entryID: doc.data().entryID,
+      sentiment: doc.data().sentiment,
     };
     journalEntries.push(data);
   });
@@ -92,7 +93,14 @@ function create_UUID() {
   return uuid;
 }
 
-const JournalEntry = ({ title, editedDate, id, userID, setJournalEntries }) => {
+const JournalEntry = ({
+  title,
+  editedDate,
+  id,
+  userID,
+  sentiment,
+  setJournalEntries,
+}) => {
   const handleDelete = async () => {
     await deleteDoc(doc(db, userID, id));
 
@@ -111,6 +119,15 @@ const JournalEntry = ({ title, editedDate, id, userID, setJournalEntries }) => {
       console.log("No such document!");
     }
   };
+  const getColor = () => {
+    if (sentiment === 1) {
+      return "blue";
+    } else if (sentiment === -1) {
+      return "red";
+    } else {
+      return "#555";
+    }
+  };
   return (
     <ListItem ripple={false} className="py-1 pr-1 pl-4 journal-entry-in-list">
       {title}
@@ -123,7 +140,12 @@ const JournalEntry = ({ title, editedDate, id, userID, setJournalEntries }) => {
         />
       </ListItemSuffix>
       <ListItemSuffix>
-        <div className="square"></div>
+        <div
+          className="square"
+          style={{
+            backgroundColor: getColor(),
+          }}
+        ></div>
       </ListItemSuffix>
       <ListItemSuffix>
         <Link to={"/signedin/edit/" + userID + "/" + id}>
@@ -161,6 +183,7 @@ export function EntriesList() {
             editedDate={entry.editedDate}
             userID={entry.userID}
             id={entry.id}
+            sentiment={entry.sentiment}
             setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
           />
         ))}

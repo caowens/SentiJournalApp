@@ -36,7 +36,7 @@ export function NewEntry(props) {
 
       const currentUser = auth.currentUser;
       const newEntryID = create_UUID();
-    
+      const randomNumber = Math.floor(Math.random() * 3) - 1; // creating mock data for sentiment score (creates -1,0, or 1)
   
       await setDoc(doc(db, currentUser.uid, newEntryID), {
         content: entryContent,
@@ -45,7 +45,8 @@ export function NewEntry(props) {
         creationDate: formattedDateAndTime,
         editedDate: formattedDateAndTime,
         title: entryTitle ?? formattedDateAndTime,
-        entryID: newEntryID
+        entryID: newEntryID,
+        sentiment: randomNumber,
       });
   
       setEntryTitle('');
