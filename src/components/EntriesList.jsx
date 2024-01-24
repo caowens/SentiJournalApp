@@ -56,8 +56,8 @@ function EditIcon() {
 const fetchJournalEntries = async () => {
   const currentUser = auth.currentUser;
   const q = query(
-    collection(db, "journals"),
-    where("userId", "==", currentUser.uid)
+    collection(db, currentUser.uid),
+    where("entryID", "!=", null)
   );
   const querySnapshot = await getDocs(q);
 
@@ -70,6 +70,8 @@ const fetchJournalEntries = async () => {
       timestamp: doc.data().timestamp,
       creationDate: doc.data().creationDate,
       editedDate: doc.data().editedDate,
+      userID: doc.data().userID,
+      entryID: doc.data().entryID,
     };
     journalEntries.push(data);
   });
@@ -90,16 +92,16 @@ function create_UUID() {
   return uuid;
 }
 
-const JournalEntry = ({ title, timestamp, id, setJournalEntries }) => {
+const JournalEntry = ({ title, editedDate, id, userID, setJournalEntries }) => {
   const handleDelete = async () => {
-    await deleteDoc(doc(db, "journals", id));
+    await deleteDoc(doc(db, userID, id));
 
     // Refetch journal entries and update state
     const newJournalEntries = await fetchJournalEntries();
     setJournalEntries(newJournalEntries);
   };
   const handleEdit = async () => {
-    const docRef = doc(db, "journals", id);
+    const docRef = doc(db, userID, id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -111,12 +113,10 @@ const JournalEntry = ({ title, timestamp, id, setJournalEntries }) => {
   };
   return (
     <ListItem ripple={false} className="py-1 pr-1 pl-4 journal-entry-in-list">
-      {/* <Link to={`/signedin/edit/${id}`}> */}
       {title}
-      {/* </Link> */}
       <ListItemSuffix>
         <Chip
-          value={timestamp}
+          value={editedDate}
           variant="ghost"
           size="sm"
           className="rounded-full"
@@ -126,7 +126,7 @@ const JournalEntry = ({ title, timestamp, id, setJournalEntries }) => {
         <div className="square"></div>
       </ListItemSuffix>
       <ListItemSuffix>
-        <Link onClick={handleEdit}>
+        <Link to={"/signedin/edit/" + userID + "/" + id}>
           <IconButton variant="text" color="blue-gray">
             <EditIcon />
           </IconButton>
@@ -158,7 +158,8 @@ export function EntriesList() {
           <JournalEntry
             key={entry.id}
             title={entry.title}
-            timestamp={entry.timestamp}
+            editedDate={entry.editedDate}
+            userID={entry.userID}
             id={entry.id}
             setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
           />

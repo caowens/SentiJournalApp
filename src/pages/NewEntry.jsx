@@ -35,16 +35,17 @@ export function NewEntry(props) {
       e.preventDefault();
 
       const currentUser = auth.currentUser;
-      const newJournalID = create_UUID();
+      const newEntryID = create_UUID();
     
   
-      await setDoc(doc(db,'journals', newJournalID), {
+      await setDoc(doc(db, currentUser.uid, newEntryID), {
         content: entryContent,
         timestamp: formattedDateAndTime,
-        userId: currentUser.uid,
+        userID: currentUser.uid,
         creationDate: formattedDateAndTime,
         editedDate: formattedDateAndTime,
-        title: entryTitle ?? formattedDateAndTime
+        title: entryTitle ?? formattedDateAndTime,
+        entryID: newEntryID
       });
   
       setEntryTitle('');
