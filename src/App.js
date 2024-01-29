@@ -30,19 +30,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/signedin",
+        path: "/signedin/:userID",
         element: <Home />,
       },
       {
-        path: "/signedin/new",
+        path: "/signedin/:userID/new",
         element: <NewEntry />,
       },
       {
-        path:"/signedin/analysis",
+        path:"/signedin/:userID/analysis",
         element: <Analysis />,
       },
       {
-        path:"/signedin/profile",
+        path:"/signedin/:userID/profile",
         element: <Profile />,
       },
       {

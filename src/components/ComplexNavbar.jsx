@@ -28,13 +28,16 @@ import {
   PlusCircleIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
+import { auth } from "../firebase.js";
+
+const currentUser = auth.currentUser;
  
 // profile menu component
 const profileMenuItems = [
   {
     label: "My Profile",
     icon: UserCircleIcon,
-    route: "/signedin/profile",
+    route: "/signedin/" + currentUser.uid + "/profile",
   },
   {
     label: "Edit Profile",
@@ -145,22 +148,22 @@ const navListItems = [
   {
     label: "Entries",
     icon: Square3Stack3DIcon,
-    route: "/signedin"
+    route: "/signedin/" + currentUser.uid
   },
   {
     label: "Account",
     icon: UserCircleIcon,
-    route: "/signedin/profile"
+    route: "/signedin/" + currentUser.uid + "/profile"
   },
   {
     label: "Analysis",
     icon: ChartBarIcon,
-    route: "/signedin/analysis"
+    route: "/signedin/" + currentUser.uid + "/analysis"
   },
   {
     label: "New",
     icon: PlusCircleIcon,
-    route: "/signedin/new"
+    route: "/signedin/" + currentUser.uid + "/new"
   },
 ];
  
@@ -208,7 +211,7 @@ export function ComplexNavbar() {
           href="#"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
-          <Link to="/signedin">
+          <Link to={"/signedin/" + currentUser.uid}>
             SentiJournal
           </Link>
         </Typography>
