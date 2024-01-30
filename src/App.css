@@ -21,13 +21,6 @@
   color: white;
 }
 
-.square {
-  height: 15px;
-  width: 15px;
-  background-color: #555;
-  border-radius: 2px;
-}
-
 .complex-nav-m {
   margin-top: 13px;
 }
@@ -63,4 +56,42 @@
 
 .journal-entry-in-list:hover {
   cursor: default;
+}
+
+.journal-entry-in-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.entry-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.entry-title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 10px; /* Adjust as necessary */
+}
+
+.edited-date {
+  margin-right: 10px; /* Adjust as necessary */
+}
+
+.square {
+  width: 18px;
+  height: 18px;
+  background-color: #555;
+  border-radius: 2px;
+}
+
+.entry-actions {
+  display: flex;
+  gap: 10px; /* Adjust as necessary */
 }

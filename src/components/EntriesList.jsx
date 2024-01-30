@@ -130,35 +130,33 @@ const JournalEntry = ({
   };
   return (
     <ListItem ripple={false} className="py-1 pr-1 pl-4 journal-entry-in-list">
-      {title}
-      <ListItemSuffix>
-        <Chip
-          value={editedDate}
-          variant="ghost"
-          size="sm"
-          className="rounded-full"
-        />
+      <div className="entry-info">
+        <h1 className="entry-title" variant="body2" truncate>{title}</h1>
+        <ListItemSuffix className="edited-date" variant="body2">
+          <Chip
+            value={editedDate}
+            variant="ghost"
+            size="sm"
+            className="rounded-full"
+          />
       </ListItemSuffix>
-      <ListItemSuffix>
         <div
           className="square"
           style={{
             backgroundColor: getColor(),
           }}
         ></div>
-      </ListItemSuffix>
-      <ListItemSuffix>
+      </div>
+      <div className="entry-actions">
         <Link to={"/signedin/edit/" + userID + "/" + id}>
           <IconButton variant="text" color="blue-gray">
             <EditIcon />
           </IconButton>
         </Link>
-      </ListItemSuffix>
-      <ListItemSuffix>
         <IconButton onClick={handleDelete} variant="text" color="blue-gray">
           <TrashIcon />
         </IconButton>
-      </ListItemSuffix>
+      </div>
     </ListItem>
   );
 };
