@@ -69,7 +69,7 @@ export function NewEntry(props) {
         entryID: newEntryID,
         sentiment: {
             score: analysis?.score,
-            label: label // Include sentiment label in the data stored in Firestore
+            label: label 
         },
       });
   
