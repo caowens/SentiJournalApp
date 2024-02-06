@@ -1,7 +1,7 @@
 import { react, useState } from "react";
 import { auth, db } from '../firebase.js';
 import { doc, setDoc } from "firebase/firestore"; 
-
+import Sentiment from 'sentiment';
 import {
   Card,
   Input,
@@ -16,9 +16,9 @@ export function NewEntry(props) {
     const formattedDate = now.toLocaleDateString();
     const formattedTime = now.toLocaleTimeString();
     const formattedDateAndTime = formattedDate + " " + formattedTime;
+    const sentiment = new Sentiment();
 
     const [entryTitle, setEntryTitle] = useState('');
-
     const [entryContent, setEntryContent] = useState('');
 
     function create_UUID(){ 
@@ -31,12 +31,33 @@ export function NewEntry(props) {
         return uuid; 
     } 
 
+    const sentimentAnalysis = (text) => {
+        const tempResult = sentiment.analyze(text);
+        return tempResult;
+    };
+
+    const createSentimentLabel = (score) => {
+        if (score > 1) {
+            return 'POSITIVE';
+        }
+        else if (score < -1) {
+            return 'NEGATIVE';
+        }
+        else {
+            return 'NEUTRAL';
+        }
+    }
+
     const handleSubmit = async (e) => {
       e.preventDefault();
 
       const currentUser = auth.currentUser;
       const newEntryID = create_UUID();
       const randomNumber = Math.floor(Math.random() * 3) - 1; // creating mock data for sentiment score (creates -1,0, or 1)
+
+      // Perform sentiment analysis on the entry content
+      const analysis  = sentimentAnalysis(entryContent);
+      const label = createSentimentLabel(analysis.score);
   
       await setDoc(doc(db, currentUser.uid, newEntryID), {
         content: entryContent,
@@ -46,7 +67,10 @@ export function NewEntry(props) {
         editedDate: formattedDateAndTime,
         title: entryTitle ?? formattedDateAndTime,
         entryID: newEntryID,
-        sentiment: randomNumber,
+        sentiment: {
+            score: analysis?.score,
+            label: label // Include sentiment label in the data stored in Firestore
+        },
       });
   
       setEntryTitle('');
