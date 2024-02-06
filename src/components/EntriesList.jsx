@@ -80,19 +80,6 @@ const fetchJournalEntries = async () => {
   return journalEntries;
 };
 
-function create_UUID() {
-  var dt = new Date().getTime();
-  var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-    /[xy]/g,
-    function (c) {
-      var r = (dt + Math.random() * 16) % 16 | 0;
-      dt = Math.floor(dt / 16);
-      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-    }
-  );
-  return uuid;
-}
-
 const JournalEntry = ({
   title,
   editedDate,
@@ -120,9 +107,9 @@ const JournalEntry = ({
     }
   };
   const getColor = () => {
-    if (sentiment === 1) {
+    if (sentiment.label === 'POSITIVE') {
       return "green";
-    } else if (sentiment === -1) {
+    } else if (sentiment.label === 'NEGATIVE') {
       return "red";
     } else {
       return "#555";
