@@ -107,9 +107,9 @@ const JournalEntry = ({
     }
   };
   const getColor = () => {
-    if (sentiment.label === 'POSITIVE') {
+    if (sentiment.label === "POSITIVE") {
       return "green";
-    } else if (sentiment.label === 'NEGATIVE') {
+    } else if (sentiment.label === "NEGATIVE") {
       return "red";
     } else {
       return "#555";
@@ -118,7 +118,9 @@ const JournalEntry = ({
   return (
     <ListItem ripple={false} className="py-1 pr-1 pl-4 journal-entry-in-list">
       <div className="entry-info">
-        <h1 className="entry-title" variant="body2" truncate>{title}</h1>
+        <h1 className="entry-title" variant="body2" truncate>
+          {title}
+        </h1>
         <ListItemSuffix className="edited-date" variant="body2">
           <Chip
             value={editedDate}
@@ -126,7 +128,7 @@ const JournalEntry = ({
             size="sm"
             className="rounded-full"
           />
-      </ListItemSuffix>
+        </ListItemSuffix>
         <div
           className="square"
           style={{
@@ -150,6 +152,7 @@ const JournalEntry = ({
 
 export function EntriesList() {
   const [journalEntries, setJournalEntries] = useState([]);
+  const currentUser = auth.currentUser;
   useEffect(() => {
     const fetchEntries = async () => {
       const entries = await fetchJournalEntries();
@@ -159,20 +162,40 @@ export function EntriesList() {
   }, []);
 
   return (
-    <Card className="w-full">
-      <List>
-        {journalEntries.map((entry) => (
-          <JournalEntry
-            key={entry.id}
-            title={entry.title}
-            editedDate={entry.editedDate}
-            userID={entry.userID}
-            id={entry.id}
-            sentiment={entry.sentiment}
-            setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
-          />
-        ))}
-      </List>
-    </Card>
+    <>
+      {journalEntries.length !== 0 ? (
+        <>
+          <Card className="w-full">
+            <List>
+              {journalEntries.map((entry) => (
+                <JournalEntry
+                  key={entry.id}
+                  title={entry.title}
+                  editedDate={entry.editedDate}
+                  userID={entry.userID}
+                  id={entry.id}
+                  sentiment={entry.sentiment}
+                  setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
+                />
+              ))}
+            </List>
+          </Card>
+        </>
+      ) : (
+        <div className="default-entries-list">
+          <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-inherit default-entries-text">
+            Click here to write your first entry
+          </h5>
+          <Link to={`/signedin/${currentUser.uid}/new`}>
+            <button
+              class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-50 text-black shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+              type="button"
+            >
+              Create
+            </button>
+          </Link>
+        </div>
+      )}
+    </>
   );
 }
