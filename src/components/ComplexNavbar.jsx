@@ -58,6 +58,16 @@ export function ComplexNavbar() {
     return () => unsubscribe();
   }, []);
 
+  // Default profile icon
+  function DefaultProfileIcon() {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        {/* <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--> */}
+        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+      </svg>
+    );
+  }
+
   // profile menu component
   const profileMenuItems = [
     {
@@ -100,13 +110,14 @@ export function ComplexNavbar() {
             color="blue-gray"
             className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
           >
-            <Avatar
-              variant="circular"
-              size="sm"
-              alt="tania andrew"
-              className="border border-gray-900 p-0.5"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="inline-block relative object-cover object-center !rounded-full w-7 h-7 border-2 border-gray-900 p-0.5">
+              <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+            </svg>
+            {/* <img
+              src="https://docs.material-tailwind.com/img/face-2.jpg"
+              alt="avatar"
+              class="inline-block relative object-cover object-center !rounded-full w-12 h-12 border-2 border-gray-900 p-0.5"
+            /> */}
             <ChevronDownIcon
               strokeWidth={2.5}
               className={`h-3 w-3 transition-transform ${
@@ -225,7 +236,9 @@ export function ComplexNavbar() {
           href="#"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
-          <Link to={isAuthenticated ? `/signedin/${currentUser.uid}` : "/"}>SentiJournal</Link>
+          <Link to={isAuthenticated ? `/signedin/${currentUser.uid}` : "/"}>
+            SentiJournal
+          </Link>
         </Typography>
         <div className="hidden lg:block">
           <NavList />
