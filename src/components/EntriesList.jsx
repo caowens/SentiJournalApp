@@ -77,7 +77,14 @@ const fetchJournalEntries = async () => {
     journalEntries.push(data);
   });
 
-  return journalEntries;
+  // Sort the journalEntries array by editedDate
+  const sortedEntries = journalEntries.sort((a, b) => {
+    const dateA = new Date(a.editedDate);
+    const dateB = new Date(b.editedDate);
+    return dateB - dateA; // Sort in descending order
+  });
+
+  return sortedEntries;
 };
 
 const JournalEntry = ({
