@@ -86,7 +86,7 @@ export function SimpleRegistrationForm(props) {
                 placeholder="********"
                 id="confirmPassword"
                 value={confirmPassword}
-                onChange = { (e) => setConfirmPassword(e.target.value) }
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                 labelProps={{
                   className: "before:content-none after:content-none",
@@ -96,7 +96,7 @@ export function SimpleRegistrationForm(props) {
             <Button
               className="mt-6"
               type="submit"
-              onClick = {(e) => signupWithUsernameAndPassword(e)}
+              onClick={(e) => signupWithUsernameAndPassword(e)}
               fullWidth
             >
               sign up

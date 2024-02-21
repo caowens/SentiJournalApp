@@ -1,58 +1,58 @@
 import {
-    Card,
-    CardBody,
-    CardHeader,
-    Typography,
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 import { ChartBarIcon, ChartBarSquareIcon } from "@heroicons/react/24/solid";
 
 const chartConfig = {
-type: "line",
-height: 240,
-series: [
+  type: "line",
+  height: 240,
+  series: [
     {
-    name: "Sentiment",
-    data: [-1, 0, 1, 1, -1, 0, -1, 1, 0],
+      name: "Sentiment",
+      data: [-1, 0, 1, 1, -1, 0, -1, 1, 0],
     },
-],
-options: {
+  ],
+  options: {
     chart: {
-    toolbar: {
+      toolbar: {
         show: true,
-    },
+      },
     },
     title: {
-    show: "",
+      show: "",
     },
     dataLabels: {
-    enabled: false,
+      enabled: false,
     },
     colors: ["#020617"],
     stroke: {
-    lineCap: "round",
-    curve: "smooth",
+      lineCap: "round",
+      curve: "smooth",
     },
     markers: {
-    size: 0,
+      size: 0,
     },
     xaxis: {
-    axisTicks: {
+      axisTicks: {
         show: false,
-    },
-    axisBorder: {
+      },
+      axisBorder: {
         show: false,
-    },
-    labels: {
+      },
+      labels: {
         style: {
-        colors: "#616161",
-        fontSize: "12px",
-        fontFamily: "inherit",
-        fontWeight: 400,
+          colors: "#616161",
+          fontSize: "12px",
+          fontFamily: "inherit",
+          fontWeight: 400,
         },
-    },
-    categories: [
+      },
+      categories: [
         "Apr",
         "May",
         "Jun",
@@ -62,71 +62,72 @@ options: {
         "Oct",
         "Nov",
         "Dec",
-    ],
+      ],
     },
     yaxis: {
-    labels: {
+      labels: {
         style: {
-        colors: "#616161",
-        fontSize: "12px",
-        fontFamily: "inherit",
-        fontWeight: 400,
+          colors: "#616161",
+          fontSize: "12px",
+          fontFamily: "inherit",
+          fontWeight: 400,
         },
-    },
+      },
     },
     grid: {
-    show: true,
-    borderColor: "#dddddd",
-    strokeDashArray: 5,
-    xaxis: {
+      show: true,
+      borderColor: "#dddddd",
+      strokeDashArray: 5,
+      xaxis: {
         lines: {
-        show: true,
+          show: true,
         },
-    },
-    padding: {
+      },
+      padding: {
         top: 5,
         right: 20,
-    },
+      },
     },
     fill: {
-    opacity: 0.8,
+      opacity: 0.8,
     },
     tooltip: {
-    theme: "dark",
+      theme: "dark",
     },
-},
+  },
 };
 
 export default function Analysis() {
-    return (
-        <div className="chart-spacing">
-            <Card>
-            <CardHeader
-                floated={false}
-                shadow={false}
-                color="transparent"
-                className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
+  return (
+    <div className="chart-spacing">
+      <Card>
+        <CardHeader
+          floated={false}
+          shadow={false}
+          color="transparent"
+          className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
+        >
+          <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
+            <ChartBarIcon className="h-6 w-6" />
+          </div>
+          <div>
+            <Typography variant="h6" color="blue-gray">
+              Sentiment Analysis Line Chart
+            </Typography>
+            <Typography
+              variant="small"
+              color="gray"
+              className="max-w-sm font-normal"
             >
-                <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
-                <ChartBarIcon className="h-6 w-6" />
-                </div>
-                <div>
-                <Typography variant="h6" color="blue-gray">
-                    Sentiment Analysis Line Chart
-                </Typography>
-                <Typography
-                    variant="small"
-                    color="gray"
-                    className="max-w-sm font-normal"
-                >
-                    A visualization of the sentiments of your entries. 1 means positive. 0 means neutral. -1 means negative.
-                </Typography>
-                </div>
-            </CardHeader>
-            <CardBody className="px-2 pb-0">
-                <Chart {...chartConfig} />
-            </CardBody>
-            </Card>
-        </div>
-    );
+              A visualization of the sentiments of your entries. 1 means
+              positive. 0 means neutral. -1 means negative.
+            </Typography>
+          </div>
+        </CardHeader>
+        <CardBody className="px-2 pb-0">
+          <Chart {...chartConfig} />
+        </CardBody>
+      </Card>
+    </div>
+  );
 }

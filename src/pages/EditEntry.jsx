@@ -2,7 +2,7 @@ import { react, useState, useEffect } from "react";
 import { auth, db } from "../firebase.js";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
-import Sentiment from 'sentiment';
+import Sentiment from "sentiment";
 import {
   Card,
   Input,
@@ -60,22 +60,20 @@ export function EditEntry(props) {
   };
 
   const createSentimentLabel = (score) => {
-      if (score > 1) {
-          return 'POSITIVE';
-      }
-      else if (score < -1) {
-          return 'NEGATIVE';
-      }
-      else {
-          return 'NEUTRAL';
-      }
-  }
+    if (score > 1) {
+      return "POSITIVE";
+    } else if (score < -1) {
+      return "NEGATIVE";
+    } else {
+      return "NEUTRAL";
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform sentiment analysis on the entry content
-    const analysis  = sentimentAnalysis(entryContent);
+    const analysis = sentimentAnalysis(entryContent);
     const label = createSentimentLabel(analysis.score);
 
     const docRef = doc(db, userID, entryID);
@@ -86,8 +84,8 @@ export function EditEntry(props) {
       title: entryTitle || formattedDateAndTime,
       sentiment: {
         score: analysis?.score,
-        label: label 
-    },
+        label: label,
+      },
     });
 
     setEntryTitle("");
