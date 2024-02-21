@@ -1,8 +1,7 @@
-import { react, useState, useEffect } from "react";
+import { react, useState, useEffect, useRef } from "react";
 import { auth, db } from "../firebase.js";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
-import Sentiment from "sentiment";
 import {
   Card,
   Input,
@@ -11,10 +10,16 @@ import {
   Typography,
   Textarea,
 } from "@material-tailwind/react";
+import { pipeline, env } from "@xenova/transformers";
+
+env.allowLocalModels = false;
+env.useBrowserCache = false;
 
 export function EditEntry(props) {
   // Access the parameters
   const { userID, entryID } = useParams();
+
+  const modal = useRef(null);
 
   const retrieveEntry = async () => {
     const docRef = doc(db, userID, entryID);
@@ -52,29 +57,15 @@ export function EditEntry(props) {
   const formattedDate = now.toLocaleDateString();
   const formattedTime = now.toLocaleTimeString();
   const formattedDateAndTime = formattedDate + " " + formattedTime;
-  const sentiment = new Sentiment();
-
-  const sentimentAnalysis = (text) => {
-    const tempResult = sentiment.analyze(text);
-    return tempResult;
-  };
-
-  const createSentimentLabel = (score) => {
-    if (score > 1) {
-      return "POSITIVE";
-    } else if (score < -1) {
-      return "NEGATIVE";
-    } else {
-      return "NEUTRAL";
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform sentiment analysis on the entry content
-    const analysis = sentimentAnalysis(entryContent);
-    const label = createSentimentLabel(analysis.score);
+    modal.current.classList.toggle("hidden");
+    const pipe = await pipeline("sentiment-analysis");
+    const out = await pipe(entryContent);
+    modal.current.classList.toggle("hidden");
 
     const docRef = doc(db, userID, entryID);
 
@@ -83,8 +74,8 @@ export function EditEntry(props) {
       editedDate: formattedDateAndTime,
       title: entryTitle || formattedDateAndTime,
       sentiment: {
-        score: analysis?.score,
-        label: label,
+        score: out[0].score,
+        label: out[0].label,
       },
     });
 
@@ -112,7 +103,7 @@ export function EditEntry(props) {
                         color="blue-gray"
                         className="-mb-3"
                       >
-                        Title (Optional)
+                        Title (Optional) !!!
                       </Typography>
                       <Input
                         size="lg"
@@ -131,6 +122,12 @@ export function EditEntry(props) {
                       >
                         Entry
                       </Typography>
+                      <div
+                        ref={modal}
+                        className="mod absolute hidden rounded-lg border-[2px] border-solid border-black/60 bg-white p-16 text-5xl"
+                      >
+                        Please wait...
+                      </div>
                       <Textarea
                         size="lg"
                         rows={10}
