@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardBody,
@@ -7,97 +8,124 @@ import {
 import Chart from "react-apexcharts";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 import { ChartBarIcon, ChartBarSquareIcon } from "@heroicons/react/24/solid";
+import { fetchJournalEntries } from '../components/EntriesList';
 
-const chartConfig = {
-  type: "line",
-  height: 240,
-  series: [
-    {
-      name: "Sentiment",
-      data: [-1, 0, 1, 1, -1, 0, -1, 1, 0],
-    },
-  ],
-  options: {
-    chart: {
-      toolbar: {
-        show: true,
+export default function Analysis() {
+  const [chartConfig, setChartConfig] = useState({
+    type: "line",
+    height: 240,
+    series: [
+      {
+        name: "Sentiment",
+        data: [],
       },
-    },
-    title: {
-      show: "",
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    colors: ["#020617"],
-    stroke: {
-      lineCap: "round",
-      curve: "smooth",
-    },
-    markers: {
-      size: 0,
-    },
-    xaxis: {
-      axisTicks: {
-        show: false,
-      },
-      axisBorder: {
-        show: false,
-      },
-      labels: {
-        style: {
-          colors: "#616161",
-          fontSize: "12px",
-          fontFamily: "inherit",
-          fontWeight: 400,
-        },
-      },
-      categories: [
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-    },
-    yaxis: {
-      labels: {
-        style: {
-          colors: "#616161",
-          fontSize: "12px",
-          fontFamily: "inherit",
-          fontWeight: 400,
-        },
-      },
-    },
-    grid: {
-      show: true,
-      borderColor: "#dddddd",
-      strokeDashArray: 5,
-      xaxis: {
-        lines: {
+    ],
+    options: {
+      chart: {
+        toolbar: {
           show: true,
         },
       },
-      padding: {
-        top: 5,
-        right: 20,
+      title: {
+        show: "",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      colors: ["#020617"],
+      stroke: {
+        lineCap: "round",
+        curve: "smooth",
+      },
+      markers: {
+        size: 0,
+      },
+      xaxis: {
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+        labels: {
+          style: {
+            colors: "#616161",
+            fontSize: "12px",
+            fontFamily: "inherit",
+            fontWeight: 400,
+          },
+        },
+        categories: [
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: "#616161",
+            fontSize: "12px",
+            fontFamily: "inherit",
+            fontWeight: 400,
+          },
+        },
+      },
+      grid: {
+        show: true,
+        borderColor: "#dddddd",
+        strokeDashArray: 5,
+        xaxis: {
+          lines: {
+            show: true,
+          },
+        },
+        padding: {
+          top: 5,
+          right: 20,
+        },
+      },
+      fill: {
+        opacity: 0.8,
+      },
+      tooltip: {
+        theme: "dark",
       },
     },
-    fill: {
-      opacity: 0.8,
-    },
-    tooltip: {
-      theme: "dark",
-    },
-  },
-};
+  });
 
-export default function Analysis() {
+  useEffect(() => {
+    const fetchChartData = async () => {
+      const journalEntries = await fetchJournalEntries(); // Fetch journal entries here
+      const categories = journalEntries.map(entry => entry.creationDate);
+      const data = journalEntries.map(entry => {
+        // Adjust score based on sentiment label
+        const score = entry.sentiment.label === 'NEGATIVE' ? -entry.sentiment.score : entry.sentiment.score;
+        return score;
+      });
+      const newChartConfig = {
+        ...chartConfig,
+        series: [{ name: "Sentiment", data }],
+        options: {
+          ...chartConfig.options,
+          xaxis: {
+            ...chartConfig.options.xaxis,
+            categories,
+          },
+        },
+      };
+      setChartConfig(newChartConfig);
+    };
+
+    fetchChartData();
+  }, []);
+
   return (
     <div className="chart-spacing">
       <Card>

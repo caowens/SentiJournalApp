@@ -206,3 +206,5 @@ export function EntriesList() {
     </>
   );
 }
+
+export { fetchJournalEntries };
