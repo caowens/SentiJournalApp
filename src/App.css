@@ -8,7 +8,8 @@ body {
 .forms {
   display:flex;
   justify-content: center;
-  margin-top: 6%;
+  align-items: center;
+  margin-top: 9%;
 }
 .forms div {
   padding:10px;
@@ -129,4 +130,8 @@ body {
   align-self: center;
   margin-top: 0px !important;
   margin-bottom: 10px;
+}
+
+.forms.new-entry-container {
+  margin-top: 5%;
 }

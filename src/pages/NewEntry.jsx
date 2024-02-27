@@ -68,7 +68,7 @@ export function NewEntry(props) {
     setEntryContent("");
   };
   return (
-    <div className="forms">
+    <div className="forms new-entry-container">
       <div className="forms-new-entry">
         <div className="form-box signup-box">
           <Card color="transparent" shadow={false}>
