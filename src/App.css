@@ -1,3 +1,10 @@
+body {
+  background-image: url('../src/images/vivid-blurred-colorful-wallpaper-background_58702-3764.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .forms {
   display:flex;
   justify-content: center;
