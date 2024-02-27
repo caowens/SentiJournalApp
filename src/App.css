@@ -35,7 +35,7 @@ body {
 
 .signup-box {
   background-color: whitesmoke;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 .forms-new-entry {
@@ -43,10 +43,14 @@ body {
   flex: 1;
   flex-direction: column;
   flex-basis: 100%;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .new-entry-box {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-spacing {
@@ -101,7 +105,7 @@ body {
 
 .entry-actions {
   display: flex;
-  gap: 10px; /* Adjust as necessary */
+  gap: 10px;
 }
 
 .default-entries-text {
@@ -118,4 +122,11 @@ body {
   padding-top: 100px;
   padding-bottom: 100px;
   gap: 20px;
+}
+
+.new-entry-save-button {
+  width: 50%;
+  align-self: center;
+  margin-top: 0px !important;
+  margin-bottom: 10px;
 }

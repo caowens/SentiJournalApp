@@ -88,7 +88,7 @@ export function NewEntry(props) {
                   placeholder="The Day I Conquered the Universe"
                   value={entryTitle}
                   onChange={(e) => setEntryTitle(e.target.value)}
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900 new-entry-title-input"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
@@ -114,7 +114,7 @@ export function NewEntry(props) {
                   }}
                 />
               </div>
-              <Button className="mt-6" type="submit" fullWidth>
+              <Button className="mt-6 new-entry-save-button" type="submit" fullWidth>
                 Save
               </Button>
             </form>
