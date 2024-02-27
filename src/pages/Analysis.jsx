@@ -13,7 +13,7 @@ import { fetchJournalEntries } from '../components/EntriesList';
 export default function Analysis() {
   const [chartConfig, setChartConfig] = useState({
     type: "line",
-    height: 240,
+    height: 340,
     series: [
       {
         name: "Sentiment",
@@ -118,6 +118,10 @@ export default function Analysis() {
             ...chartConfig.options.xaxis,
             categories,
           },
+          yaxis: {
+            min: -1,
+            max: 1
+          },
         },
       };
       setChartConfig(newChartConfig);
@@ -147,8 +151,8 @@ export default function Analysis() {
               color="gray"
               className="max-w-sm font-normal"
             >
-              A visualization of the sentiments of your entries. 1 means
-              positive. 0 means neutral. -1 means negative.
+              A visualization of the sentiments of your entries. A positive score represents a positive sentiment.
+               A negative score means a negative sentiment. If the sentiment is closer to 0, then it is a more neutral sentiment.
             </Typography>
           </div>
         </CardHeader>
