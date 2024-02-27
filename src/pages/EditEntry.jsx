@@ -86,7 +86,7 @@ export function EditEntry(props) {
     <div>
       {entry !== null ? (
         <>
-          <div className="forms">
+          <div className="forms new-entry-container">
             <div className="forms-new-entry">
               <div className="form-box signup-box">
                 <Card color="transparent" shadow={false}>
@@ -103,7 +103,7 @@ export function EditEntry(props) {
                         color="blue-gray"
                         className="-mb-3"
                       >
-                        Title (Optional) !!!
+                        Title (Optional)
                       </Typography>
                       <Input
                         size="lg"
@@ -139,7 +139,7 @@ export function EditEntry(props) {
                         }}
                       />
                     </div>
-                    <Button className="mt-6" type="submit" fullWidth>
+                    <Button className="mt-6 new-entry-save-button" type="submit" fullWidth>
                       Update
                     </Button>
                   </form>

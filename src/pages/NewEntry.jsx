@@ -88,7 +88,7 @@ export function NewEntry(props) {
                   placeholder="The Day I Conquered the Universe"
                   value={entryTitle}
                   onChange={(e) => setEntryTitle(e.target.value)}
-                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900 new-entry-title-input"
+                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                   labelProps={{
                     className: "before:content-none after:content-none",
                   }}
