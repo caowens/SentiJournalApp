@@ -1,4 +1,4 @@
-import { react, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   List,
   ListItem,
@@ -101,17 +101,6 @@ const JournalEntry = ({
     // Refetch journal entries and update state
     const newJournalEntries = await fetchJournalEntries();
     setJournalEntries(newJournalEntries);
-  };
-  const handleEdit = async () => {
-    const docRef = doc(db, userID, id);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
   };
   const getColor = () => {
     if (sentiment.label === "POSITIVE") {

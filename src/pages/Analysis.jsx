@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -6,9 +6,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
-import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
-import { ChartBarIcon, ChartBarSquareIcon } from "@heroicons/react/24/solid";
-import { fetchJournalEntries } from '../components/EntriesList';
+import { ChartBarIcon } from "@heroicons/react/24/solid";
+import { fetchJournalEntries } from "../components/EntriesList";
 
 export default function Analysis() {
   const [chartConfig, setChartConfig] = useState({
@@ -103,10 +102,13 @@ export default function Analysis() {
   useEffect(() => {
     const fetchChartData = async () => {
       const journalEntries = await fetchJournalEntries(); // Fetch journal entries here
-      const categories = journalEntries.map(entry => entry.creationDate);
-      const data = journalEntries.map(entry => {
+      const categories = journalEntries.map((entry) => entry.creationDate);
+      const data = journalEntries.map((entry) => {
         // Adjust score based on sentiment label
-        const score = entry.sentiment.label === 'NEGATIVE' ? -entry.sentiment.score : entry.sentiment.score;
+        const score =
+          entry.sentiment.label === "NEGATIVE"
+            ? -entry.sentiment.score
+            : entry.sentiment.score;
         return score;
       });
       const newChartConfig = {
@@ -120,7 +122,7 @@ export default function Analysis() {
           },
           yaxis: {
             min: -1,
-            max: 1
+            max: 1,
           },
         },
       };
@@ -151,8 +153,10 @@ export default function Analysis() {
               color="gray"
               className="max-w-sm font-normal"
             >
-              A visualization of the sentiments of your entries. A positive score represents a positive sentiment.
-               A negative score means a negative sentiment. If the sentiment is closer to 0, then it is a more neutral sentiment.
+              A visualization of the sentiments of your entries. A positive
+              score represents a positive sentiment. A negative score means a
+              negative sentiment. If the sentiment is closer to 0, then it is a
+              more neutral sentiment.
             </Typography>
           </div>
         </CardHeader>

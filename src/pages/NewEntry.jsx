@@ -1,10 +1,9 @@
-import { react, useState, useRef } from "react";
+import { useState } from "react";
 import { auth, db } from "../firebase.js";
 import { doc, setDoc } from "firebase/firestore";
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
   Textarea,
@@ -32,7 +31,7 @@ export function NewEntry(props) {
       function (c) {
         var r = (dt + Math.random() * 16) % 16 | 0;
         dt = Math.floor(dt / 16);
-        return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+        return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
       }
     );
     return uuid;
@@ -113,10 +112,10 @@ export function NewEntry(props) {
                 type="submit"
                 fullWidth
               >
-                {loading ? ( 
-                <div className="btn-spinner">
-                  <Spinner />
-                </div>
+                {loading ? (
+                  <div className="btn-spinner">
+                    <Spinner />
+                  </div>
                 ) : (
                   "Save" // Show "Save" text when loading is false
                 )}

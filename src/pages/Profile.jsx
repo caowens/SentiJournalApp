@@ -1,11 +1,4 @@
-import react from "react";
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, Button, Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { signOut } from "firebase/auth";

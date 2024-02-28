@@ -1,11 +1,10 @@
-import { react, useState, useEffect, useRef } from "react";
-import { auth, db } from "../firebase.js";
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { db } from "../firebase.js";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
   Textarea,
@@ -139,7 +138,7 @@ export function EditEntry(props) {
                       type="submit"
                       fullWidth
                     >
-                      {loading ? ( 
+                      {loading ? (
                         <div className="btn-spinner">
                           <Spinner />
                         </div>

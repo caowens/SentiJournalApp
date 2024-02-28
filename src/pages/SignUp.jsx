@@ -1,8 +1,7 @@
-import { react, useState } from "react";
+import { useState } from "react";
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
   Alert,

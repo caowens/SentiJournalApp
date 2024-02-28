@@ -1,4 +1,3 @@
-import react from "react";
 import { EntriesList } from "../components/EntriesList";
 import { Typography } from "@material-tailwind/react";
 
