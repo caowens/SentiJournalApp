@@ -73,7 +73,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <!-- <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -85,6 +85,7 @@
 ## About The Project
 
 [![Home Screen Shot][home-screenshot]](https://example.com)
+[![Analysis Screen Shot][analysis-screenshot]](https://example.com)
 
 This project proposes to build a digital journal application that uses natural language processing to perform a sentiment analysis on journal entries to provide users more insights on their mental health over time. The journal will be able to have many features that take this beyond a traditional journal, including analyzing the emotional tone of the user’s entries, identify patterns in the user’s emotions and experiences, and prompt users with questions to encourage deeper reflection.
 
@@ -256,7 +257,8 @@ These are resources I've found helpful and would like to give credit to.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: src/images/screenshot.png
-[home-screenshot]: src/images/homeScreenshot.png
+[home-screenshot]: src/images/newHomeScreenshot.png
+[analysis-screenshot]: src/images/analysis.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
