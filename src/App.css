@@ -135,3 +135,9 @@ body {
 .forms.new-entry-container {
   margin-top: 5%;
 }
+
+.btn-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

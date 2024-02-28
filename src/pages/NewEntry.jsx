@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
   Textarea,
+  Spinner,
 } from "@material-tailwind/react";
 import { pipeline, env } from "@xenova/transformers";
 
@@ -20,10 +21,9 @@ export function NewEntry(props) {
   const formattedTime = now.toLocaleTimeString();
   const formattedDateAndTime = formattedDate + " " + formattedTime;
 
-  const modal = useRef(null);
-
   const [entryTitle, setEntryTitle] = useState("");
   const [entryContent, setEntryContent] = useState("");
+  const [loading, setLoading] = useState(false); // State to track loading status
 
   function create_UUID() {
     var dt = new Date().getTime();
@@ -45,10 +45,10 @@ export function NewEntry(props) {
     const newEntryID = create_UUID();
 
     // Perform sentiment analysis on the entry content
-    modal.current.classList.toggle("hidden");
+    setLoading(true); // Set loading to true when starting the analysis
     const pipe = await pipeline("sentiment-analysis");
     const out = await pipe(entryContent);
-    modal.current.classList.toggle("hidden");
+    setLoading(false); // Set loading to false when analysis is done
 
     await setDoc(doc(db, currentUser.uid, newEntryID), {
       content: entryContent,
@@ -96,12 +96,6 @@ export function NewEntry(props) {
                 <Typography variant="h6" color="blue-gray" className="-mb-3">
                   Entry
                 </Typography>
-                <div
-                  ref={modal}
-                  className="mod absolute hidden rounded-lg border-[2px] border-solid border-black/60 bg-white p-16 text-5xl"
-                >
-                  Please wait...
-                </div>
                 <Textarea
                   size="lg"
                   placeholder="Today was a great day..."
@@ -114,8 +108,18 @@ export function NewEntry(props) {
                   }}
                 />
               </div>
-              <Button className="mt-6 new-entry-save-button" type="submit" fullWidth>
-                Save
+              <Button
+                className="mt-6 new-entry-save-button"
+                type="submit"
+                fullWidth
+              >
+                {loading ? ( 
+                <div className="btn-spinner">
+                  <Spinner />
+                </div>
+                ) : (
+                  "Save" // Show "Save" text when loading is false
+                )}
               </Button>
             </form>
           </Card>

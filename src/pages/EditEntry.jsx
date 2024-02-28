@@ -9,6 +9,7 @@ import {
   Button,
   Typography,
   Textarea,
+  Spinner,
 } from "@material-tailwind/react";
 import { pipeline, env } from "@xenova/transformers";
 
@@ -19,7 +20,7 @@ export function EditEntry(props) {
   // Access the parameters
   const { userID, entryID } = useParams();
 
-  const modal = useRef(null);
+  const [loading, setLoading] = useState(false); // State to track loading status
 
   const retrieveEntry = async () => {
     const docRef = doc(db, userID, entryID);
@@ -62,10 +63,10 @@ export function EditEntry(props) {
     e.preventDefault();
 
     // Perform sentiment analysis on the entry content
-    modal.current.classList.toggle("hidden");
+    setLoading(true); // Set loading to true when starting the analysis
     const pipe = await pipeline("sentiment-analysis");
     const out = await pipe(entryContent);
-    modal.current.classList.toggle("hidden");
+    setLoading(false); // Set loading to false when analysis is done
 
     const docRef = doc(db, userID, entryID);
 
@@ -122,12 +123,6 @@ export function EditEntry(props) {
                       >
                         Entry
                       </Typography>
-                      <div
-                        ref={modal}
-                        className="mod absolute hidden rounded-lg border-[2px] border-solid border-black/60 bg-white p-16 text-5xl"
-                      >
-                        Please wait...
-                      </div>
                       <Textarea
                         size="lg"
                         rows={10}
@@ -139,8 +134,18 @@ export function EditEntry(props) {
                         }}
                       />
                     </div>
-                    <Button className="mt-6 new-entry-save-button" type="submit" fullWidth>
-                      Update
+                    <Button
+                      className="mt-6 new-entry-save-button"
+                      type="submit"
+                      fullWidth
+                    >
+                      {loading ? ( 
+                        <div className="btn-spinner">
+                          <Spinner />
+                        </div>
+                      ) : (
+                        "Update" // Show "Update" text when loading is false
+                      )}
                     </Button>
                   </form>
                 </Card>
