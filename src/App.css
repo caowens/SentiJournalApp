@@ -143,3 +143,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.entries-list {
+  overflow-y: auto;
+  max-height: 550px;
+}

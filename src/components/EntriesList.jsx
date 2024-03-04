@@ -161,7 +161,7 @@ export function EntriesList() {
     <>
       {journalEntries.length !== 0 ? (
         <>
-          <Card className="w-full">
+          <Card className="w-full entries-list">
             <List>
               {journalEntries.map((entry) => (
                 <JournalEntry
