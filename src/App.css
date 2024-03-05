@@ -148,3 +148,43 @@ body {
   overflow-y: auto;
   max-height: 550px;
 }
+
+.analysis-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-analysis {
+  justify-self: center;
+  align-self: center;
+  width: 1000px;
+}
+
+.about-analysis-card {
+  width: 1000px;
+  height: auto;
+}
+
+.about-analysis-icon {
+  justify-self: center;
+  align-self: center;
+}
+
+.about-analysis-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-analysis-card-body > * {
+  align-self: center;
+}
+
+.about-analysis b {
+  font-weight: 600;
+}
+
+.about-analysis a {
+  color: #8c61ff;
+  font-weight: 500;
+}
