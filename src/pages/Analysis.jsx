@@ -102,7 +102,7 @@ export default function Analysis() {
   useEffect(() => {
     const fetchChartData = async () => {
       const journalEntries = await fetchJournalEntries(); // Fetch journal entries here
-      const categories = journalEntries.map((entry) => entry.editedDate);
+      const categories = journalEntries.map((entry) => entry.editedDate).reverse();
       const data = journalEntries.map((entry) => {
         // Adjust score based on sentiment label
         const score =
