@@ -102,7 +102,7 @@ export default function Analysis() {
   useEffect(() => {
     const fetchChartData = async () => {
       const journalEntries = await fetchJournalEntries(); // Fetch journal entries here
-      const categories = journalEntries.map((entry) => entry.creationDate);
+      const categories = journalEntries.map((entry) => entry.editedDate);
       const data = journalEntries.map((entry) => {
         // Adjust score based on sentiment label
         const score =
@@ -123,6 +123,7 @@ export default function Analysis() {
           yaxis: {
             min: -1,
             max: 1,
+            decimalsInFloat: 3,
           },
         },
       };
