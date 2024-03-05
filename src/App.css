@@ -57,7 +57,7 @@ body {
 }
 
 .chart-spacing {
-  padding: 100px;
+  padding: 100px 100px 30px 100px;
 }
 
 .complex-navbar {
@@ -158,6 +158,7 @@ body {
   justify-self: center;
   align-self: center;
   width: 1000px;
+  padding-bottom: 50px;
 }
 
 .about-analysis-card {
@@ -187,4 +188,14 @@ body {
 .about-analysis a {
   color: #8c61ff;
   font-weight: 500;
+}
+
+.learn-more {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 85px;
+}
+.learn-more-text{
+  text-align: center;
 }

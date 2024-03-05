@@ -56,7 +56,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="max-h-[768px] overflow-scroll">
+    <div className="max-h-[100vh] overflow-scroll">
       <RouterProvider router={router} />
     </div>
 
