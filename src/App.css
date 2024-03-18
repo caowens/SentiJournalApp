@@ -223,9 +223,10 @@ body {
   gap: 20px;
 }
 
-.header a {
+.header a,
+.hero-secondary {
   font-size: 18px;
-  color: #E5E7EB;
+  color: aliceblue;
 }
 
 .header a:hover {
@@ -255,4 +256,60 @@ body {
 .header-login:hover {
   background-color: black;
   border-color: black;
+}
+
+.section{
+  height: 600px;
+  box-sizing: border-box;
+  padding: 0px 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-section {
+  flex-direction: column;
+  padding-top: 75px;
+}
+
+.hero-main {
+  font-size: 38px;
+  font-weight: 800;
+  color: #F9FAF8;
+  text-align: center;
+}
+
+.hero-main-title {
+  font-size: 150px;
+}
+
+.hero-secondary {
+  font-weight: 500;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.get-started-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.learn-more-btn {
+  border-color: aliceblue;
+  color: aliceblue;
+}
+
+.learn-more-btn:hover {
+  border-color: black;
+  color: aliceblue;
+  background-color: black;
+}
+
+.learn-more-btn > a:hover {
+  color: #8c61ff;
 }
