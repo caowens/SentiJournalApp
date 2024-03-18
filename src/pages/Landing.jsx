@@ -143,6 +143,19 @@ export function Landing() {
             <ContactForm />
           </div>
         </div>
+
+        <footer className="footer-section">
+          <div className="copyright">© 2024 SentiJournal</div>
+          <ul className="footer-links">
+            <li>About Us</li>
+            <li>
+              <a href="">Contact Us</a>
+            </li>
+            <li>
+              <a href="">FAQs</a>
+            </li>
+          </ul>
+        </footer>
       </div>
     </>
   );
