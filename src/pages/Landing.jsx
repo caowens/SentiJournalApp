@@ -67,7 +67,7 @@ export function Landing() {
               in your journaling journey.
             </div>
           </div>
-          <img src={entriesListGif} alt="Home Page with Entries List" />
+          <img src={entriesListGif} alt="Gif of Home Page with Entries List" />
         </div>
 
         <div className="visualize-section section">
@@ -82,7 +82,7 @@ export function Landing() {
               Start journaling today and see the power of tracking your
               emotions.
             </div>
-            <img src={analysisGif} alt="" />
+            <img src={analysisGif} alt="Gif of Sentiment Analysis graph in action" />
           </div>
         </div>
 
