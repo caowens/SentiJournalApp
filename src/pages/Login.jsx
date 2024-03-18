@@ -22,7 +22,7 @@ export function SimpleRegistrationForm(props) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       const currentUser = auth.currentUser;
-      navigate("./signedin/" + currentUser.uid);
+      navigate("/signedin/" + currentUser.uid);
     } catch {
       setNotice("You entered a wrong username or password.");
     }
