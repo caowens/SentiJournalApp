@@ -12,10 +12,16 @@ import Analysis from './pages/Analysis';
 import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';
 import { EditEntry } from './pages/EditEntry';
+import { Landing } from './pages/Landing';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Landing />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
     element: <Login />,
     errorElement: <ErrorPage />,
   },
