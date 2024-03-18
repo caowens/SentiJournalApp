@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import entriesListGif from "../images/entriesListGif.gif";
+import analysisGif from "../images/analysisGif.gif";
 
 export function Landing() {
   return (
@@ -62,6 +63,21 @@ export function Landing() {
             </div>
           </div>
           <img src={entriesListGif} alt="Home Page with Entries List" />
+        </div>
+      </div>
+
+      <div className="visualize-section section">
+        <div className="visualize-intro">
+          <div className="visualize-main">
+            Visualize Your Emotions with SentiJournal
+          </div>
+          <div className="visualize-secondary">
+            Discover how your emotions evolve over time with SentiJournal's
+            unique emotion tracking graph. Gain insights into your emotional
+            well-being and understand the factors that influence your mood.
+            Start journaling today and see the power of tracking your emotions.
+          </div>
+          <img src={analysisGif} alt="" />
         </div>
       </div>
     </>
