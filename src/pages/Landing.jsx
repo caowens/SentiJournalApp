@@ -16,7 +16,10 @@ export function Landing() {
               <a href="">About Us</a>
             </li>
             <li className="contact">
-              <a href="">Contact</a>
+              <a href="#contact-section">Contact</a>
+            </li>
+            <li className="contact">
+              <a href="#faq-section">FAQs</a>
             </li>
           </ul>
           <ul className="header-buttons">
@@ -41,15 +44,15 @@ export function Landing() {
               into your feelings and see how they evolve over time.
             </div>
             <div className="get-started-section">
-              <Button className="get-started-btn">Get Started</Button>
+              <Button className="get-started-btn"><a href="#discover-section">Get Started</a></Button>
               <Button variant="outlined" className="learn-more-btn">
-                <a href="">Learn More</a>
+                <a href="#faq-section">Learn More</a>
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="discover-section section">
+        <div className="discover-section section" id="discover-section">
           <div className="discover-intro">
             <div className="discover-main">
               Uncover the <span className="emotions">emotions</span> in{" "}
@@ -83,7 +86,7 @@ export function Landing() {
           </div>
         </div>
 
-        <div className="faq-section section">
+        <div className="faq-section section" id="faq-section">
           <div className="faq-intro">
             <div className="faq-main">Frequently Asked Questions</div>
             <div className="faq-secondary">
@@ -91,7 +94,7 @@ export function Landing() {
               privacy policy, and use cases.
             </div>
             <Button className="faq-contact-btn">
-              <a href="">Contact</a>
+              <a href="#contact-section">Contact</a>
             </Button>
           </div>
           <div className="faq-questions-container">
@@ -132,7 +135,7 @@ export function Landing() {
           </div>
         </div>
 
-        <div className="contact-section section">
+        <div className="contact-section section" id="contact-section">
           <div className="contact-intro">
             <div className="contact-main">Contact SentiJournal</div>
             <div className="contact-secondary">
@@ -149,10 +152,10 @@ export function Landing() {
           <ul className="footer-links">
             <li>About Us</li>
             <li>
-              <a href="">Contact Us</a>
+              <a href="#contact-section">Contact Us</a>
             </li>
             <li>
-              <a href="">FAQs</a>
+              <a href="#faq-section">FAQs</a>
             </li>
           </ul>
         </footer>
