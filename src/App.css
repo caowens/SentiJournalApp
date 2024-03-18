@@ -370,9 +370,14 @@ body {
 .faq-intro {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   width: 100%;
   padding-right: 100px;
+}
+
+.faq-contact-btn {
+  width: 50%;
+  margin-top: 10px;
 }
 
 .faq-questions {
