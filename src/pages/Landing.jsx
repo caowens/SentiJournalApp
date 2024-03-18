@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
+import homeScreen from "../images/newHomeScreenshot.png";
 
 export function Landing() {
   return (
@@ -43,6 +44,24 @@ export function Landing() {
               </Button>
             </div>
           </div>
+        </div>
+
+        <div className="discover-section section">
+          <div className="discover-intro">
+            <div className="discover-main">
+              Uncover the <span className="emotions">emotions</span> in{" "}
+              <br></br> your journal entries
+            </div>
+            <div className="discover-secondary">
+              SentiJournal utilizes advanced sentiment analysis models to
+              categorize and score the emotions expressed in your journal
+              entries. SentiJournal enhances your journaling experience by
+              displaying a snapshot of the emotional tone next to each entry in
+              your list, giving you instant insight into the sentiments captured
+              in your journaling journey.
+            </div>
+          </div>
+          <img src={homeScreen} alt="Home Page with Entries List" />
         </div>
       </div>
     </>
