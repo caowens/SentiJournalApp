@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
-import homeScreen from "../images/newHomeScreenshot.png";
+import entriesListGif from "../images/entriesListGif.gif";
 
 export function Landing() {
   return (
@@ -61,7 +61,7 @@ export function Landing() {
               in your journaling journey.
             </div>
           </div>
-          <img src={homeScreen} alt="Home Page with Entries List" />
+          <img src={entriesListGif} alt="Home Page with Entries List" />
         </div>
       </div>
     </>
