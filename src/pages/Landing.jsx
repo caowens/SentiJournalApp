@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import entriesListGif from "../images/entriesListGif.gif";
 import analysisGif from "../images/analysisGif.gif";
+import { FAQAccordion } from "../components/FAQAccordion";
 
 export function Landing() {
   return (
@@ -78,6 +79,53 @@ export function Landing() {
             Start journaling today and see the power of tracking your emotions.
           </div>
           <img src={analysisGif} alt="" />
+        </div>
+      </div>
+
+      <div className="faq-section section">
+        <div className="faq-intro">
+          <div className="faq-main">Frequently Asked Questions</div>
+          <div className="faq-secondary">
+            Find answers to common questions about SentiJournal's features,
+            privacy policy, and use cases.
+          </div>
+          <Button className="faq-contact-btn"><a href="">Contact</a></Button>
+        </div>
+        <div className="faq-questions-container">
+          <div className="faq-questions">
+            <ul>
+              <li className="faq-card">
+                <FAQAccordion
+                  header="What is SentiJournal?"
+                  description="SentiJournal is a digital journal that uses sentiment analysis models to provide a sentiment label and score for each journal entry. It also displays a graph showing how your emotions have changed over time."
+                />
+              </li>
+              <li className="faq-card">
+                <FAQAccordion
+                  header="How does it work?"
+                  description="SentiJournal uses adavanced sentiment analysis algorithms to analyze the text of your journal entries. It then assigns a sentiment label (postive, negative, or neutral) and a corresponding score. The journal entries and sentiment scores are dipslayed in a graph, allowing you to track your emotional journey over time."
+                />
+              </li>
+              <li className="faq-card">
+                <FAQAccordion
+                  header="Is my data private?"
+                  description="Yes, we take your privacy seriously. SentiJournal securely stores your journal entries and sentiment data. We do not share your personal information with third parties without your consent. For more information, please refer to our privacy policy."
+                />
+              </li>
+              <li className="faq-card">
+                <FAQAccordion
+                  header="Who can use SentiJournal?"
+                  description="SentiJournal is designed for anyone who wants to track and understand their emotions through journaling. It can be used by individuals, therapists, and researchers to gain insights into emotional well-being and patterns."
+                />
+              </li>
+              <li className="faq-card">
+                <FAQAccordion
+                  header="How can I get started?"
+                  description="To get started with SentiJournal, simply sign up for an account on our website. Once you're signed in, you can start journaling and exploring the sentiment analysis features. Start your emotional journey today!"
+                />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
