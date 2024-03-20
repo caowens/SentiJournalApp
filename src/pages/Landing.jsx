@@ -10,7 +10,7 @@ export function Landing() {
     <>
       <div className="landing">
         <div className="header">
-          SentiJournal
+          <a href="/">SentiJournal</a>
           <ul className="header-links">
             <li className="about-us">
               <a href="">About Us</a>
@@ -44,7 +44,9 @@ export function Landing() {
               into your feelings and see how they evolve over time.
             </div>
             <div className="get-started-section">
-              <Button className="get-started-btn"><a href="#discover-section">Get Started</a></Button>
+              <Button className="get-started-btn">
+                <a href="#discover-section">Get Started</a>
+              </Button>
               <Button variant="outlined" className="learn-more-btn">
                 <a href="#faq-section">Learn More</a>
               </Button>
@@ -82,7 +84,10 @@ export function Landing() {
               Start journaling today and see the power of tracking your
               emotions.
             </div>
-            <img src={analysisGif} alt="Gif of Sentiment Analysis graph in action" />
+            <img
+              src={analysisGif}
+              alt="Gif of Sentiment Analysis graph in action"
+            />
           </div>
         </div>
 
