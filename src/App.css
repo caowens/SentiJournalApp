@@ -204,6 +204,10 @@ body {
   text-align: center;
 }
 
+.learn-more-text:hover {
+  color: white;
+}
+
 /* Landing Page */
 
 .landing {

@@ -169,7 +169,7 @@ export default function Analysis() {
       </div>
 
       <div className="learn-more">
-        <Typography className="learn-more-text">Learn More</Typography>
+        <Typography className="learn-more-text"><a href="#about-analysis">Learn More</a></Typography>
         {/* Chevron Down Icon */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           {/* <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--> */}
@@ -177,7 +177,7 @@ export default function Analysis() {
         </svg>
       </div>
 
-      <div className="about-analysis">
+      <div className="about-analysis" id="about-analysis">
         <Card className="mt-6 w-96 about-analysis-card">
           <CardBody className="about-analysis-card-body">
             <div className="w-max rounded-lg bg-gray-900 p-5 text-white about-analysis-icon">
