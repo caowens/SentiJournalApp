@@ -26,10 +26,24 @@ body {
   justify-content: center;
 }
 
+.home-header {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.home-entries-dropdown {
+  margin-left: 250px;
+}
+
+.bg-w {
+  background-color: white;
+}
+
 .entries {
   padding: 10px;
   align-self: center;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 }
 
 .entries-title {
