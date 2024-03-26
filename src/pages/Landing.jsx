@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
-import entriesListGif from "../images/entriesListGif.gif";
+import entriesListGif from "../images/newerEntriesListGif.gif";
 import analysisGif from "../images/analysisGif.gif";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { ContactForm } from "../components/ContactForm";
