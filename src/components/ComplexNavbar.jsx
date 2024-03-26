@@ -24,6 +24,7 @@ import {
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 import { auth } from "../firebase.js";
+import SJLogo from "../images/SJLogo.svg";
 
 export function ComplexNavbar() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -236,7 +237,13 @@ export function ComplexNavbar() {
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
           <Link to={isAuthenticated ? `/signedin/${currentUser.uid}` : "/"}>
-            SentiJournal
+            <div className="header-logo-container">
+              <img
+                className="header-logo-home filter-white"
+                src={SJLogo}
+                alt="SentiJournal Logo"
+              />
+            </div>
           </Link>
         </Typography>
         <div className="hidden lg:block">
