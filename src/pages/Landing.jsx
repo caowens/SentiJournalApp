@@ -5,6 +5,7 @@ import analysisGif from "../images/analysisGif.gif";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { ContactForm } from "../components/ContactForm";
 import SJLogo from "../images/SJLogo.svg";
+import { FooterWithLogo } from "../components/FooterWithLogo";
 
 export function Landing() {
   return (
@@ -161,18 +162,7 @@ export function Landing() {
           </div>
         </div>
 
-        <footer className="footer-section">
-          <div className="copyright">© 2024 SentiJournal</div>
-          <ul className="footer-links">
-            <li>About Us</li>
-            <li>
-              <a href="#contact-section">Contact Us</a>
-            </li>
-            <li>
-              <a href="#faq-section">FAQs</a>
-            </li>
-          </ul>
-        </footer>
+        <FooterWithLogo />
       </div>
     </>
   );

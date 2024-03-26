@@ -447,22 +447,6 @@ body {
   width: 500px;
 }
 
-.footer-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 92px;
+.landing .bg-black {
   background-color: #212121;
-  color: #F9FAF8;
-  font-weight: 500;
-  padding: 0px 10%;
-}
-
-.footer-section ul {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-section li:hover {
-  color: #8c61ff;
 }
