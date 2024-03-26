@@ -278,6 +278,22 @@ body {
   border-color: black;
 }
 
+.header-logo-landing {
+  width: 50px;
+  height: 50px;
+}
+
+.header-logo-container {
+  display: inline-block; 
+  border: 1px solid white;
+  border-radius: 100%;
+  background-color: black;
+}
+
+.filter-white {
+  filter: invert(99%) sepia(26%) saturate(790%) hue-rotate(303deg) brightness(113%) contrast(97%);
+}
+
 .section{
   height: 700px;
   box-sizing: border-box;

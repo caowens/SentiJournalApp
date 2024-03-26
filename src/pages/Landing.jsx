@@ -4,13 +4,22 @@ import entriesListGif from "../images/entriesListGif.gif";
 import analysisGif from "../images/analysisGif.gif";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { ContactForm } from "../components/ContactForm";
+import SJLogo from "../images/SJLogo.svg";
 
 export function Landing() {
   return (
     <>
       <div className="landing">
         <div className="header">
-          <a href="/">SentiJournal</a>
+          <a href="/">
+            <div className="header-logo-container">
+              <img
+                className="header-logo-landing filter-white"
+                src={SJLogo}
+                alt="SentiJournal Logo"
+              />
+            </div>
+          </a>
           <ul className="header-links">
             <li className="about-us">
               <a href="">About Us</a>
