@@ -12,7 +12,6 @@ import {
   query,
   where,
   getDocs,
-  getDoc,
   doc,
   deleteDoc,
 } from "firebase/firestore";
@@ -202,7 +201,7 @@ export function EntriesList(props) {
       setJournalEntries(entries);
     };
     fetchEntries();
-  }, []);
+  }, [props.sortOption]);
 
   return (
     <>
