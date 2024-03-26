@@ -15,8 +15,16 @@ body {
   display:flex;
   justify-content: center;
   align-items: center;
+}
+
+.forms-signup {
+  margin-top: 4%;
+}
+
+.forms-login {
   margin-top: 9%;
 }
+
 .forms div {
   padding:10px;
 }
@@ -288,6 +296,16 @@ body {
   border: 1px solid white;
   border-radius: 100%;
   background-color: black;
+}
+
+.login-logo-container {
+  display: flex; 
+  justify-content: center;
+}
+
+.login-logo {
+  width: 75px;
+  height: 75px;
 }
 
 .filter-white {

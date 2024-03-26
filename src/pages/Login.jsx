@@ -9,6 +9,7 @@ import {
 import { auth } from "../firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
+import SJLogo from "../images/SJLogo.svg";
 
 export function SimpleRegistrationForm(props) {
   const navigate = useNavigate();
@@ -31,16 +32,27 @@ export function SimpleRegistrationForm(props) {
     <div className={props}>
       <div className="form-box signup-box">
         <Card color="transparent" shadow={false}>
+        <a href="/">
+            <div className="login-logo-container">
+              <div className="header-logo-container">
+                <img
+                  className="login-logo filter-white"
+                  src={SJLogo}
+                  alt="SentiJournal Logo"
+                />
+              </div>
+            </div>
+          </a>
           <Typography color="gray" className="mt-1 font-normal">
             {"" !== notice && <Alert color="red">{notice}</Alert>}
           </Typography>
-          <Typography variant="h4" color="blue-gray">
+          <Typography variant="h4" color="blue-gray" className="text-center">
             Login
           </Typography>
-          <Typography color="gray" className="mt-1 font-normal">
+          <Typography color="gray" className="mt-1 font-normal text-center">
             Welcome back! Enter your details to log in.
           </Typography>
-          <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+          <form className="mt-2 mb-2 w-80 max-w-screen-lg sm:w-96">
             <div className="mb-1 flex flex-col gap-6">
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Your Email
@@ -87,7 +99,7 @@ export function SimpleRegistrationForm(props) {
             <Typography color="gray" className="mt-4 text-center font-normal">
               Need to create an account?{" "}
               <a href="#" className="font-medium text-gray-900">
-                <Link to="./signup">Sign Up</Link>
+                <Link to="/signup">Sign Up</Link>
               </a>
             </Typography>
           </form>
@@ -99,7 +111,7 @@ export function SimpleRegistrationForm(props) {
 
 export function Login() {
   return (
-    <div className="forms">
+    <div className="forms forms-login">
       <SimpleRegistrationForm props="forms" />
     </div>
   );
