@@ -146,12 +146,59 @@ const JournalEntry = ({
   );
 };
 
-export function EntriesList() {
+export function EntriesList(props) {
   const [journalEntries, setJournalEntries] = useState([]);
   const currentUser = auth.currentUser;
   useEffect(() => {
     const fetchEntries = async () => {
-      const entries = await fetchJournalEntries();
+      let entries = await fetchJournalEntries();
+
+      switch (props.sortOption) {
+        case "Oldest":
+          entries.sort(
+            (a, b) => new Date(a.editedDate) - new Date(b.editedDate)
+          );
+          break;
+        case "NegativeFirst":
+          entries.sort((a, b) => {
+            if (
+              a.sentiment.label === "NEGATIVE" &&
+              b.sentiment.label === "POSITIVE"
+            ) {
+              return -1; // "NEGATIVE" comes before "POSITIVE"
+            } else if (
+              a.sentiment.label === "POSITIVE" &&
+              b.sentiment.label === "NEGATIVE"
+            ) {
+              return 1; // "POSITIVE" comes after "NEGATIVE"
+            } else {
+              return 0; // Preserve the order if labels are the same
+            }
+          });
+          break;
+        case "PositiveFirst":
+          entries.sort((a, b) => {
+            if (
+              a.sentiment.label === "POSITIVE" &&
+              b.sentiment.label === "NEGATIVE"
+            ) {
+              return -1; // "POSITIVE" comes before "NEGATIVE"
+            } else if (
+              a.sentiment.label === "NEGATIVE" &&
+              b.sentiment.label === "POSITIVE"
+            ) {
+              return 1; // "NEGATIVE" comes after "POSITIVE"
+            } else {
+              return 0; // Preserve the order if labels are the same
+            }
+          });
+          break;
+        default:
+          entries.sort(
+            (a, b) => new Date(b.editedDate) - new Date(a.editedDate)
+          );
+          break;
+      }
       setJournalEntries(entries);
     };
     fetchEntries();
