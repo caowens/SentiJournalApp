@@ -257,8 +257,8 @@ These are resources I've found helpful and would like to give credit to.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: src/images/screenshot.png
-[home-screenshot]: src/images/newHomeScreenshot.png
-[analysis-screenshot]: src/images/analysis.png
+[home-screenshot]: src/images/newerHomeScreenshot.png
+[analysis-screenshot]: src/images/newAnalysis.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
