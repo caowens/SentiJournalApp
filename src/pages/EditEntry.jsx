@@ -21,25 +21,25 @@ export function EditEntry(props) {
 
   const [loading, setLoading] = useState(false); // State to track loading status
 
-  const retrieveEntry = async () => {
-    const docRef = doc(db, userID, entryID);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      return docSnap.data();
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-      return null;
-    }
-  };
-
   const [entry, setEntry] = useState(null);
   const [entryTitle, setEntryTitle] = useState("");
   const [entryContent, setEntryContent] = useState("");
 
   useEffect(() => {
+    const retrieveEntry = async () => {
+      const docRef = doc(db, userID, entryID);
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        return docSnap.data();
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+        return null;
+      }
+    };
+
     // Call the retrieveEntry function and set the state
     const fetchData = async () => {
       const entryData = await retrieveEntry();

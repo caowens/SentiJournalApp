@@ -23,7 +23,7 @@ export function Landing() {
           </a>
           <ul className="header-links">
             <li className="about-us">
-              <a href="">About Us</a>
+              <a href="/">About Us</a>
             </li>
             <li className="contact">
               <a href="#contact-section">Contact</a>

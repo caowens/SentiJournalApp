@@ -98,7 +98,7 @@ export function SimpleRegistrationForm(props) {
             </Link>
             <Typography color="gray" className="mt-4 text-center font-normal">
               Need to create an account?{" "}
-              <a href="#" className="font-medium text-gray-900">
+              <a href="/signup" className="font-medium text-gray-900">
                 <Link to="/signup">Sign Up</Link>
               </a>
             </Typography>

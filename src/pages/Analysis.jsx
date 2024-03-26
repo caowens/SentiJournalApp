@@ -131,7 +131,7 @@ export default function Analysis() {
     };
 
     fetchChartData();
-  }, []);
+  }, [chartConfig]);
 
   return (
     <div className="analysis-container">
@@ -216,6 +216,7 @@ export default function Analysis() {
               <a
                 href="https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english?text=I+don%27t+like+you.+I+hate+you"
                 target="_blank"
+                rel="noreferrer"
               >
                 DistilBERT-base-uncased text classification model, fine-tuned on
                 the SST-2 dataset
