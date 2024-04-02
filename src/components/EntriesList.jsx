@@ -17,6 +17,7 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../firebase.js";
 import { Link } from "react-router-dom";
+import { SkeletonEntry } from "./SkeletonEntry.jsx";
 
 function TrashIcon() {
   return (
@@ -146,11 +147,13 @@ const JournalEntry = ({
 };
 
 export function EntriesList(props) {
+  const [loading, setLoading] = useState(true);
   const [journalEntries, setJournalEntries] = useState([]);
   const currentUser = auth.currentUser;
   useEffect(() => {
     const fetchEntries = async () => {
       let entries = await fetchJournalEntries();
+      setLoading(false);
 
       switch (props.sortOption) {
         case "Oldest":
@@ -205,25 +208,22 @@ export function EntriesList(props) {
 
   return (
     <>
-      {journalEntries.length !== 0 ? (
-        <>
-          <Card className="w-full entries-list">
-            <List>
-              {journalEntries.map((entry) => (
-                <JournalEntry
-                  key={entry.id}
-                  title={entry.title}
-                  editedDate={entry.editedDate}
-                  userID={entry.userID}
-                  id={entry.id}
-                  sentiment={entry.sentiment}
-                  setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
-                />
-              ))}
-            </List>
-          </Card>
-        </>
-      ) : (
+      {loading ? (
+        <Card className="w-full entries-list">
+          <List>
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+            <SkeletonEntry />
+          </List>
+        </Card>
+      ) : journalEntries.length === 0 ? (
         <div className="default-entries-list">
           <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-inherit default-entries-text">
             Click here to write your first entry
@@ -237,6 +237,22 @@ export function EntriesList(props) {
             </button>
           </Link>
         </div>
+      ) : (
+        <Card className="w-full entries-list">
+          <List>
+            {journalEntries.map((entry) => (
+              <JournalEntry
+                key={entry.id}
+                title={entry.title}
+                editedDate={entry.editedDate}
+                userID={entry.userID}
+                id={entry.id}
+                sentiment={entry.sentiment}
+                setJournalEntries={setJournalEntries} // Pass setJournalEntries as a prop
+              />
+            ))}
+          </List>
+        </Card>
       )}
     </>
   );
