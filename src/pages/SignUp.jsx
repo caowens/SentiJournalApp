@@ -24,7 +24,8 @@ export function SimpleRegistrationForm(props) {
     if (password === confirmPassword) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        navigate("/");
+        const currentUser = auth.currentUser;
+        navigate("/signedin/" + currentUser.uid);
       } catch {
         setNotice("Sorry, something went wrong. Please try again.");
       }
