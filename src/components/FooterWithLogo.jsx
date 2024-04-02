@@ -16,16 +16,6 @@ export function FooterWithLogo() {
           <li>
             <Typography
               as="a"
-              href="#"
-              color="white"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
-            >
-              About Us
-            </Typography>
-          </li>
-          <li>
-            <Typography
-              as="a"
               href="https://github.com/caowens/SentiJournalApp?tab=readme-ov-file#contributing"
               target="_blank"
               color="white"
