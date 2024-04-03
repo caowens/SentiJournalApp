@@ -139,9 +139,7 @@ export function EditEntry(props) {
                       fullWidth
                     >
                       {loading ? (
-                        <div className="btn-spinner">
-                          <Spinner />
-                        </div>
+                        <Spinner className="h-4 w-4 spinner" />
                       ) : (
                         "Update" // Show "Update" text when loading is false
                       )}

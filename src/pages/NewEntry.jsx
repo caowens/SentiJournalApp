@@ -113,9 +113,7 @@ export function NewEntry(props) {
                 fullWidth
               >
                 {loading ? (
-                  <div className="btn-spinner">
-                    <Spinner />
-                  </div>
+                  <Spinner className="h-4 w-4 spinner" />
                 ) : (
                   "Save" // Show "Save" text when loading is false
                 )}
