@@ -111,13 +111,13 @@ export default function Analysis() {
             : entry.sentiment.score;
         return score;
       });
-      const newChartConfig = {
-        ...chartConfig,
+      setChartConfig(prevConfig => ({
+        ...prevConfig,
         series: [{ name: "Sentiment", data }],
         options: {
-          ...chartConfig.options,
+          ...prevConfig.options,
           xaxis: {
-            ...chartConfig.options.xaxis,
+            ...prevConfig.options.xaxis,
             categories,
           },
           yaxis: {
@@ -126,8 +126,7 @@ export default function Analysis() {
             decimalsInFloat: 3,
           },
         },
-      };
-      setChartConfig(newChartConfig);
+      }));
     };
 
     fetchChartData();
