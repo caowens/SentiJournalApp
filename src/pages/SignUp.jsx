@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Card,
   Input,
@@ -17,6 +18,7 @@ export function SimpleRegistrationForm(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [notice, setNotice] = useState("");
+  const form = useRef();
 
   const signupWithUsernameAndPassword = async (e) => {
     e.preventDefault();
@@ -24,6 +26,23 @@ export function SimpleRegistrationForm(props) {
     if (password === confirmPassword) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
+
+        // Send user welcome email
+        emailjs
+          .sendForm("service_skaio3a", "template_4eyy7jy", form.current, {
+            publicKey: "FNfPkpKBFyceLaDUh",
+          })
+          .then(
+            (result) => {
+              console.log(result.text);
+              console.log("Message sent!");
+            },
+            (error) => {
+              console.log("Message FAILED...", error.text);
+            }
+          );
+        
+        // navigate to entries list with user credentials
         const currentUser = auth.currentUser;
         navigate("/signedin/" + currentUser.uid);
       } catch {
@@ -38,7 +57,7 @@ export function SimpleRegistrationForm(props) {
     <div className={props}>
       <div className="form-box signup-box">
         <Card color="transparent" shadow={false}>
-        <a href="/">
+          <a href="/">
             <div className="login-logo-container">
               <div className="header-logo-container">
                 <img
@@ -58,7 +77,7 @@ export function SimpleRegistrationForm(props) {
           <Typography color="gray" className="mt-1 font-normal text-center">
             Nice to meet you! Enter your details to register.
           </Typography>
-          <form className="mt-2 mb-2 w-80 max-w-screen-lg sm:w-96">
+          <form ref={form} className="mt-2 mb-2 w-80 max-w-screen-lg sm:w-96">
             <div className="mb-1 flex flex-col gap-6">
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Your Email
@@ -71,6 +90,7 @@ export function SimpleRegistrationForm(props) {
                 aria-describedby="emailHelp"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                name="user_email"
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                 labelProps={{
                   className: "before:content-none after:content-none",
