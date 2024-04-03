@@ -43,11 +43,12 @@
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/caowens/SentiJournalApp">View Demo</a>
+    <a href="https://sentijournal-fb-app.web.app/">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <!-- <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a> -->
+    <!-- · -->
+    <!-- <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
+    <a href="https://github.com/caowens/SentiJournalApp/issues">Request Feature</a>
   </p>
 </div>
 
@@ -71,7 +72,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <!-- <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
@@ -214,9 +215,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Alex Owens - caowens256@gmail.com
+Alex Owens (Developer) - caowens256@gmail.com
 
-Project Link: [https://github.com/caowens/SentiJournalApp](https://github.com/caowens/SentiJournalApp)
+SentiJournal email - sentijournalforall@gmail.com
+
+Repo Link: [https://github.com/caowens/SentiJournalApp](https://github.com/caowens/SentiJournalApp)
+
+Project Link: [https://sentijournal-fb-app.web.app/](https://sentijournal-fb-app.web.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -235,6 +240,7 @@ These are resources I've found helpful and would like to give credit to.
 * [React Icons](https://react-icons.github.io/react-icons/search)
 * [DistilBERT base uncased finetuned SST-2 text classification model](https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english?text=I+don%27t+like+you.+I+hate+you)
 * [Hugging Face](https://huggingface.co/)
+* [EmailJS](https://www.emailjs.com/)
 <!-- * [Malven's Grid Cheatsheet](https://grid.malven.co/) -->
 <!-- * [GitHub Pages](https://pages.github.com) -->
 
