@@ -130,7 +130,7 @@ export default function Analysis() {
     };
 
     fetchChartData();
-  }, [chartConfig]);
+  }, []);
 
   return (
     <div className="analysis-container">
