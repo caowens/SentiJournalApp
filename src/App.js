@@ -1,18 +1,15 @@
-import './App.css';
-import { SignUp } from './pages/SignUp';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import ErrorPage from './pages/ErrorPage';
-import Root from './routes/Root';
-import { NewEntry } from './pages/NewEntry';
-import { Home } from './pages/Home';
-import Analysis from './pages/Analysis';
-import { Login } from './pages/Login';
-import { Profile } from './pages/Profile';
-import { EditEntry } from './pages/EditEntry';
-import { Landing } from './pages/Landing';
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
+import Root from "./routes/Root";
+import Analysis from "./pages/Analysis";
+import { NewEntry } from "./pages/NewEntry";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { SignUp } from "./pages/SignUp";
+import { Profile } from "./pages/Profile";
+import { EditEntry } from "./pages/EditEntry";
+import { Landing } from "./pages/Landing";
 
 const router = createBrowserRouter([
   {
@@ -44,19 +41,18 @@ const router = createBrowserRouter([
         element: <NewEntry />,
       },
       {
-        path:"/signedin/:userID/analysis",
+        path: "/signedin/:userID/analysis",
         element: <Analysis />,
       },
       {
-        path:"/signedin/:userID/profile",
+        path: "/signedin/:userID/profile",
         element: <Profile />,
       },
       {
-        path:"/signedin/edit/:userID/:entryID",
+        path: "/signedin/edit/:userID/:entryID",
         element: <EditEntry />,
       },
     ],
-
   },
 ]);
 
@@ -65,7 +61,6 @@ function App() {
     <div className="max-h-[100vh] overflow-scroll">
       <RouterProvider router={router} />
     </div>
-
   );
 }
 
