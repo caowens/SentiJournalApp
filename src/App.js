@@ -1,3 +1,5 @@
+import React from "react";
+import { useMediaQuery } from "react-responsive";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
@@ -56,11 +58,31 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
+const NonDesktopOnlyMessage = () => {
   return (
-    <div className="max-h-[100vh] overflow-scroll">
+    <div style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", color: "white" }}>
+      <h1>This site is not currently optimized for mobile devices.</h1>
+      <p>
+        Please view it on a desktop or larger screen for the best experience.
+      </p>
+    </div>
+  );
+};
+
+function App() {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+
+  return (
+    <>
+    { (isTabletOrMobile || isPortrait) ? (
+      <NonDesktopOnlyMessage />
+    ) : (
+      <div className="max-h-[100vh] overflow-scroll">
       <RouterProvider router={router} />
     </div>
+    )}
+    </>
   );
 }
 
